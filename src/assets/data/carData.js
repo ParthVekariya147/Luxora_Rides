@@ -8,6 +8,13 @@ import img06 from "../all-images/cars-img/audi.png";
 import img07 from "../all-images/cars-img/bmw-offer.png";
 import img08 from "../all-images/cars-img/ferrari_amalfi.jpg";
 import img09 from "../all-images/cars-img/MG_cyberster_EV.jpg";
+import img10 from "../all-images/cars-img/Renault_Kwid.jpg";
+import img11 from "../all-images/cars-img/volvo_xc40.jpg";
+import img12 from "../all-images/cars-img/lexus-nx.jpg";
+import img13 from "../all-images/cars-img/jaguar-f-pace.jpg";
+import img14 from "../all-images/cars-img/porsche-macan.jpg";
+import img15 from "../all-images/cars-img/honda-elevate.jpg";
+
 
 
 const carData = [
@@ -156,6 +163,108 @@ const carData = [
     description:
       "The MG Cyberster is a fully electric 2-seater roadster with a futuristic design, scissor doors, and dual electric motors producing 503 bhp and 725 Nm. It features a 77 kWh battery, rapid acceleration, triple curved displays, and Level‑2 ADAS. MG’s bold EV represents a blend of classic roadster spirit and cutting-edge EV tech.",
   },
+
+  {
+  id: 10,
+  brand: "Renault",
+  rating: 112,
+  carName: "Renault Kwid",
+  imgUrl: img10, 
+  model: "Climber 1.0 AMT Dual Tone",
+  price: 28000, 
+  speed: "150 km/h",
+  gps: "In-built GPS with 8-inch touchscreen MediaNAV",
+  seatType: "Fabric seat upholstery with orange accents",
+  automatic: "5-speed AMT (Automatic Manual Transmission)",
+  description:
+    "The Renault Kwid is a compact hatchback known for its SUV-inspired design and affordability. It features a 1.0L engine with AMT transmission, a digital instrument cluster, touchscreen infotainment, and excellent fuel economy. It's a great choice for city commutes and first-time drivers looking for style and efficiency in a budget-friendly package.",
+},
+
+{
+  id: 11,
+  brand: "Volvo",
+  rating: 185,
+  carName: "Volvo XC40 Recharge",
+  imgUrl: img11, 
+  model: "XC40 Recharge Twin AWD",
+  price: 45000, 
+  speed: "180 km/h",
+  gps: "Integrated Google Maps with Android Automotive OS",
+  seatType: "Nappa leather upholstery with powered front seats",
+  automatic: "Single-speed automatic (EV)",
+  description:
+    "The Volvo XC40 Recharge is a luxury electric SUV combining Scandinavian design with cutting-edge EV performance. It comes with a dual-motor setup delivering 408 hp, a 78 kWh battery, and an estimated range of up to 418 km. Features include a panoramic sunroof, premium audio system, ADAS safety tech, and seamless Google integration. Ideal for premium EV enthusiasts.",
+},
+
+{
+  id: 12,
+  brand: "Lexus",
+  rating: 190,
+  carName: "Lexus NX 350h",
+  imgUrl: img12, 
+  model: "NX 350h Luxury AWD",
+  price: 52000, 
+  speed: "200 km/h",
+  gps: "Lexus Premium Navigation with 14-inch touchscreen",
+  seatType: "Ventilated leather seats with memory function",
+  automatic: "E-CVT Automatic (Hybrid)",
+  description:
+    "The Lexus NX 350h is a refined hybrid luxury SUV that blends power, efficiency, and advanced tech. It features a 2.5L petrol engine paired with an electric motor for smooth AWD performance. Notable highlights include a panoramic sunroof, Mark Levinson sound system, wireless Apple CarPlay, and Lexus Safety System+. A perfect mix of eco-friendliness and elegance.",
+},
+
+{
+  id: 13,
+  brand: "Jaguar",
+  rating: 195,
+  carName: "Jaguar F-Pace",
+  imgUrl: img13, 
+  model: "F-Pace R-Dynamic S 2.0 Petrol AWD",
+  price: 50000, 
+  speed: "217 km/h",
+  gps: "Pivi Pro with 11.4-inch HD touchscreen and connected navigation",
+  seatType: "Windsor leather performance seats with heating and memory",
+  automatic: "8-speed automatic transmission",
+  description:
+    "The Jaguar F-Pace is a performance-focused luxury SUV offering dynamic handling and elegant styling. Powered by a 2.0L turbocharged petrol engine with AWD, it delivers a sporty yet refined drive. With features like adaptive dynamics, a panoramic roof, Meridian sound system, and AI-driven infotainment, the F-Pace ensures a thrilling and comfortable journey.",
+},
+
+{
+  id: 14,
+  brand: "Porsche",
+  rating: 205,
+  carName: "Porsche Macan",
+  imgUrl: img14, 
+  model: "Macan 2.0 Turbo Petrol AWD",
+  price: 57000, 
+  speed: "232 km/h",
+  gps: "Porsche Communication Management (PCM) with Navigation Plus",
+  seatType: "Leather sport seats with 14-way electric adjustment",
+  automatic: "7-speed PDK automatic transmission",
+  description:
+    "The Porsche Macan is a high-performance luxury SUV known for its sporty handling and premium comfort. It features a 2.0L turbocharged petrol engine with AWD, sharp driving dynamics, and a refined cabin. With options like adaptive air suspension, Bose surround sound, and a fully digital cockpit, the Macan brings the essence of Porsche to the SUV segment.",
+},
+
+{
+  id: 15,
+  brand: "Honda",
+  rating: 140,
+  carName: "Honda Elevate",
+  imgUrl: img15, 
+  model: "Elevate ZX CVT",
+  price: 25000, 
+  speed: "170 km/h",
+  gps: "Honda Connect with built-in navigation and remote control features",
+  seatType: "Leather upholstery with driver seat height adjustment",
+  automatic: "7-speed CVT automatic transmission",
+  description:
+    "The Honda Elevate is a stylish and practical compact SUV tailored for Indian roads. Powered by a 1.5L i-VTEC petrol engine, it offers smooth performance with a CVT option. Key features include a 10.25-inch infotainment system, wireless Apple CarPlay & Android Auto, ADAS safety tech, and a bold, SUV-like stance. It’s ideal for daily commutes and weekend getaways.",
+}
+
+
+
+
+
+
 ];
 
 export default carData;

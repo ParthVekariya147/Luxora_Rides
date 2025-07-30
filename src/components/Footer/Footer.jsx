@@ -42,12 +42,12 @@ const Footer = () => {
                             <h1>
                                 <Link to='/home' className='d-flex align-items-center gap-3'>
                                     <i class="ri-car-line"></i>
-                                    <span>Rent Car <br /> Service</span>
+                                    <span>Luxora_Rides</span>
                                 </Link>
                             </h1>
                         </div>
                         <p className="footer__logo-content">
-                            Rent Car Service is a service which provides you with best cars to Rent for Hours/Days wise. We're the first to give this types of service in Indore. Soon we'll Upgrade more features in our service. Till then Stay connected and enjoy the rides. 
+                            Luxora_Rides is a service which provides you with best cars to Rent for Hours/Days wise. We're the first to give this types of service in India. Soon we'll Upgrade more features in our service. Till then Stay connected and enjoy the rides. 
                         </p>
                     </Col>
 
@@ -72,7 +72,7 @@ const Footer = () => {
                         <div className="mb-4">
                             <h5 className="footer__link-title mb-4">Head Office</h5>
                             <p className="office__info">
-                                101, Apollo Premier Building, Vijay Nagar Square, surat 395010
+                                01, abcd Building, xyz chowk, Surat Gujarat 395010
                             </p>
                             <p className="office__info">Phone: +91 1234567890</p>
                             <p className="office__info">E-mail: abcdefghi123@gmail.com</p>
