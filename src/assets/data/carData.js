@@ -1,63 +1,65 @@
 // import all images from assets/images directory
-import img01 from "../all-images/cars-img/rolls-royce.jpg";
-import img02 from "../all-images/cars-img/Tesla-Model-Y.jpg";
-import img03 from "../all-images/cars-img/bmw-offer.png";
+import img01 from "../all-images/cars-img/mahindra-SUVs.jpg";
+import img02 from "../all-images/cars-img/Tata-Punch.jpg";
+import img03 from "../all-images/cars-img/mahindra-xev-9e.jpg";
 import img04 from "../all-images/cars-img/renault_kiger.jpg";
 import img05 from "../all-images/cars-img/MG_M9_EV.jpg";
 import img06 from "../all-images/cars-img/audi.png";
-import img07 from "../all-images/cars-img/mahindra-xev-9e.jpg";
+import img07 from "../all-images/cars-img/bmw-offer.png";
 import img08 from "../all-images/cars-img/ferrari_amalfi.jpg";
 import img09 from "../all-images/cars-img/MG_cyberster_EV.jpg";
 
 
 const carData = [
   {
-    id: 1,
-    brand: "Rolls-Royce",
-    rating: 200,
-    carName: "Rolls-Royce Droptail",
-    imgUrl: img01,
-    model: "Droptail Coachbuilt Roadster",
-    price: 26000,
-    speed: "250 km/h",
-    gps: "Bespoke Rolls-Royce infotainment with handcrafted dashboard interface",
-    seatType: "Two-seat leather lounge with exotic wood & carbon detailing",
-    automatic: "8-speed ZF",
-    description:
-      "The Rolls-Royce Droptail is a hyper-exclusive coachbuilt roadster limited to only 4 units globally. Inspired by luxury yachts and 1930s roadsters, it combines modern elegance with timeless craftsmanship. It features a 6.75L twin-turbocharged V12 engine, removable carbon-fiber roof, custom Audemars Piguet timepiece, and unmatched personalization. Every Droptail is individually commissioned, making it the pinnacle of luxury motoring.",
+  id: 1,
+  brand: "Mahindra",
+  rating: 170,
+  carName: "XUV400 EV",
+  imgUrl: img01, // Replace with actual image import or path
+  model: "XUV400 EL Pro",
+  price: 29000, // Approximate daily rent in INR
+  speed: "160 km/h",
+  gps: "Built-in GPS with Mahindra AdrenoX interface",
+  seatType: "Premium leatherette with contrast stitching",
+  automatic: "Single-speed automatic (EV)",
+  description:
+    "The Mahindra XUV400 is a feature-rich electric SUV designed for modern urban and highway travel. Powered by a 39.4 kWh battery, it offers a certified range of up to 456 km and can go from 0 to 100 km/h in 8.3 seconds. It supports fast charging, advanced connectivity, dual-tone styling, and a spacious cabin, making it a solid choice in the Indian EV market.",
+ },
+
+
+  {
+  id: 2,
+  brand: "Tata",
+  rating: 155,
+  carName: "Tata Punch",
+  imgUrl: img02, // Replace with actual image import or path
+  model: "Creative Flagship Dual Tone",
+  price: 32000, // Approximate daily rent in INR
+  speed: "150 km/h",
+  gps: "Harman touchscreen infotainment with navigation support",
+  seatType: "Fabric upholstery with dual-tone finish",
+  automatic: "5-speed AMT (Automated Manual Transmission)",
+  description:
+    "The Tata Punch is a compact SUV with a bold stance and top-tier safety, earning a 5-star Global NCAP rating. It features a 1.2L Revotron petrol engine, high ground clearance, smart infotainment, and city-friendly agility. The Punch blends performance and practicality, making it ideal for urban and occasional off-road use.",
   },
 
   {
-    id: 2,
-    brand: "Tesla",
-    rating: 150,
-    carName: "Tesla Model Y",
-    imgUrl: img02,
-    model: "Model Y (2025)",
-    price: 20000,
-    speed: "217–250 km/h",
-    gps: "15-inch touchscreen with Tesla Navigation, voice control, and live traffic updates",
-    seatType: "Vegan leather, heated front/rear seats, 5 or optional 7-seater",
-    automatic: "dual-motor AWD",
-    description:
-      "The Tesla Model Y is a fully electric mid-size SUV now available in India as of July 2025. It offers up to 533 km range (WLTP), Autopilot with optional Full Self Driving (FSD), and over-the-air software updates. Known for its minimalistic interior and 15″ touchscreen, the Model Y blends performance, tech, and practicality. Imported initially from Giga Shanghai, it represents Tesla’s entry into the Indian EV market.",
+  id: 3,
+  brand: "Mahindra",
+  rating: 170,
+  carName: "Mahindra XEV 9e",
+  imgUrl: img03, 
+  model: "XEV 9e Coupe Electric SUV",
+  price: 26000, 
+  speed: "200 km/h",
+  gps: "5G-connected Mahindra AdrenoX infotainment with Level 2 ADAS integration",
+  seatType: "Vegan leather seats with ambient lighting and panoramic sunroof",
+  automatic: "automatic with regenerative braking",
+  description:
+    "The Mahindra XEV 9e is a premium electric coupe SUV built on Mahindra’s all-new INGLO EV platform. Combining bold styling with advanced technology, the XEV 9e offers a range of up to 610 km on a single charge and features dual-screen infotainment, Level 2 ADAS, fast charging support, and sustainable interiors. Its coupe-like profile and futuristic cabin make it one of the most stylish and feature-rich EVs in the Indian market."
   },
 
-  {
-    id: 3,
-    brand: "BMW",
-    rating: 132,
-    carName: "BMW 520i",
-    imgUrl: img03,
-    model: "G60‑Model‑2025",
-    price: 24000,
-    speed: "230km/h",
-    gps: "GPS Navigation",
-    seatType: "Leather, Heated Front Seats",
-    automatic: "8‑Speed ZF ",
-    description:
-      "The 2025 BMW 520i (Luxury Line) is part of the eighth-gen G60 5 Series, offering an efficient 2.0 L TwinPower Turbo inline‑4 producing ~208 PS and 330 Nm, mated to an 8‑speed automatic gearbox. It provides a premium cabin with adaptive LED lighting, advanced driver assistance, and a tech‑rich curved display setup.",
-  },
 
   {
     id: 4,
@@ -108,19 +110,19 @@ const carData = [
   },
 
   {
-  id: 7,
-  brand: "Mahindra",
-  rating: 170,
-  carName: "Mahindra XEV 9e",
-  imgUrl: img07, 
-  model: "XEV 9e Coupe Electric SUV",
-  price: 26000, 
-  speed: "200 km/h",
-  gps: "5G-connected Mahindra AdrenoX infotainment with Level 2 ADAS integration",
-  seatType: "Vegan leather seats with ambient lighting and panoramic sunroof",
-  automatic: "automatic with regenerative braking",
-  description:
-    "The Mahindra XEV 9e is a premium electric coupe SUV built on Mahindra’s all-new INGLO EV platform. Combining bold styling with advanced technology, the XEV 9e offers a range of up to 610 km on a single charge and features dual-screen infotainment, Level 2 ADAS, fast charging support, and sustainable interiors. Its coupe-like profile and futuristic cabin make it one of the most stylish and feature-rich EVs in the Indian market."
+    id: 7,
+    brand: "BMW",
+    rating: 132,
+    carName: "BMW 520i",
+    imgUrl: img07,
+    model: "G60‑Model‑2025",
+    price: 24000,
+    speed: "230km/h",
+    gps: "GPS Navigation",
+    seatType: "Leather, Heated Front Seats",
+    automatic: "8‑Speed ZF ",
+    description:
+      "The 2025 BMW 520i (Luxury Line) is part of the eighth-gen G60 5 Series, offering an efficient 2.0 L TwinPower Turbo inline‑4 producing ~208 PS and 330 Nm, mated to an 8‑speed automatic gearbox. It provides a premium cabin with adaptive LED lighting, advanced driver assistance, and a tech‑rich curved display setup.",
   },
 
   {
@@ -130,7 +132,7 @@ const carData = [
     carName: "Ferrari 12Cilindri",
     imgUrl: img08,
     model: "12Cilindri / Amalfi V12 GT (2025)",
-    price: 32000,
+    price: 42000,
     speed: "0–100 km/h in 2.9 s, Top speed 340 km/h",
     gps: "Ferrari Infotainment with integrated navigation & dual displays",
     seatType: "Leather sports seats with memory, ventilation & electronic adjustment",
@@ -146,7 +148,7 @@ const carData = [
     carName: "MG Cyberster",
     imgUrl: img09,
     model: "Cyberster EV Roadster (2025)",
-    price: 19000,
+    price: 45000,
     speed: "0–100 km/h in 3.2 s",
     gps: "iSmart Navigation with triple-screen layout",
     seatType: "Electric sports seats with leather upholstery",
