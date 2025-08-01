@@ -105,7 +105,7 @@ const Header = () => {
 
                         <div className="header__location-content">
                             <h4>Monday to Saturday</h4>
-                            <h6>09.00AM - 5:00PM</h6>
+                            <h6>09:00AM - 5:00PM</h6>
                         </div>
 
                     </div>

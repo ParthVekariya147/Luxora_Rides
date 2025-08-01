@@ -2,19 +2,24 @@
 
 .blog__item{
     border: 1px solid #7c8a972e;
+    padding: 20px;
+    border-radius: 5px;
 
 }
 
 .blog__time{
     border-top: 1px solid #7c8a972e;
+    font-size: 1.0rem;
+    height: 50px;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
  
 .read__more{
-    color: #f9a826;
-    font-weight: 600;
-    text-decoration: none;
-    font-size: 1rem;
-    transition: 0.3s;
+    font-size: 1.0rem;
+    color: #7c8a97;
 }
 
 .read__more:hover{
