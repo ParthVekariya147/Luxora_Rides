@@ -71,7 +71,7 @@ const Home = () => {
                 </Col>
 
                 {
-                    carData.slice(0 , 6).map((item) => (
+                    carData.slice(0 , 9).map((item) => (
                         <CarItem item={item} key={item.id} />
                     ))
                 }

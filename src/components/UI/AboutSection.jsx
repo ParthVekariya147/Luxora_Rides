@@ -18,7 +18,7 @@ const AboutSection = ({aboutClass}) => {
                     <div className="about__section-content">
                         <h4 className="section__subtitle">About Us</h4>
                         <h2 className="section__title">
-                            Welcome to Rent Car Service Surat
+                            Welcome to Luxora Surat
                         </h2>
                         <p className="section__description">
                             We are the very first company to provide the people of Surat rent car for daily or hourly services. Rent car with very good condition in your range. cheap to expensive we have a lot of cars for your Service and you may choose any preferable car you want to ride!! inside of the city to outside of the city you can travel with our car by very simple condition and with very friendly budget!

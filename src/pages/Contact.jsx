@@ -32,7 +32,7 @@ const Contact = () => {
     return <Helmet title='Contact'>
             <CommonSection title='Contact'/>
             <section>
-                <Container>
+                <Container className="mt-5 mb-5">
                     <Row>
                         <Col lg='7' md='7'>
                             <h6 className="fw-bold mb-4">
