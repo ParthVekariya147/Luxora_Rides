@@ -56,42 +56,32 @@ const CarDetails = () => {
                                 {singleCarItem.description}
                             </p>
 
-                            <div className="d-flex align-items-center mt-3" style={{columnGap: "4rem"}}>
-                               <span className="d-flex align-items-center gap-1
-                               section__description ">  
-                                  <i class="ri-roadster-line" style={{color:"#f9a826"}}></i> {singleCarItem.model}
-                               </span>
+                            <div className="mt-3 d-flex flex-column gap-3">
+  <span className="d-flex align-items-center gap-2 section__description">
+    <i className="ri-roadster-line text-warning"></i> {singleCarItem.model}
+  </span>
 
-                               <span className="d-flex align-items-center gap-1
-                               section__description ">  
-                                  <i class="ri-settings-2-line" style={{color:"#f9a826"}}></i> {singleCarItem.automatic}
-                               </span>
+  <span className="d-flex align-items-center gap-2 section__description">
+    <i className="ri-settings-2-line text-warning"></i> {singleCarItem.automatic}
+  </span>
 
-                               <span className="d-flex align-items-center gap-1
-                               section__description ">  
-                                  <i class="ri-timer-flash-line" style={{color:"#f9a826"}}></i>{singleCarItem.speed}
-                               </span>
-                               
-                            </div>
+  <span className="d-flex align-items-center gap-2 section__description">
+    <i className="ri-timer-flash-line text-warning"></i> {singleCarItem.speed}
+  </span>
 
+  <span className="d-flex align-items-center gap-2 section__description">
+    <i className="ri-map-pin-2-line text-warning"></i> {singleCarItem.gps}
+  </span>
 
-                            <div className="d-flex align-items-center mt-3" style={{columnGap: "2.8rem"}}>
-                               <span className="d-flex align-items-center gap-1
-                               section__description ">  
-                                  <i class="ri-map-pin-2-line" style={{color:"#f9a826"}}></i> {singleCarItem.gps}
-                               </span>
+  <span className="d-flex align-items-center gap-2 section__description">
+    <i className="ri-wheelchair-line text-warning"></i> {singleCarItem.seatType}
+  </span>
 
-                               <span className="d-flex align-items-center gap-1
-                               section__description ">  
-                                  <i class="ri-wheelchair-line" style={{color:"#f9a826"}}></i> {singleCarItem.seatType}
-                               </span>
+  <span className="d-flex align-items-center gap-2 section__description">
+    <i className="ri-building-2-line text-warning"></i> {singleCarItem.brand}
+  </span>
+</div>
 
-                               <span className="d-flex align-items-center gap-1
-                               section__description ">  
-                                 <i class="ri-building-2-line" style={{color:"#f9a826"}}></i> {singleCarItem.brand}
-                               </span>
-                               
-                            </div>
                         </div>
                     </Col>
 

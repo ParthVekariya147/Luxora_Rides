@@ -12,7 +12,7 @@ module.exports = {
     },
   },
   plugins: [],
+  corePlugins: {
+    preflight: false, // Bootstrap conflict avoid કરવા માટે
+  },
 }
-  
-
-  
