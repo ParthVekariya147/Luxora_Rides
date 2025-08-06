@@ -7,7 +7,7 @@
 }
 
 .car__item-info span i {
-    color: #f9a826;
+    color: #A1757B;
     font-size: 1.1rem;
 }
 
@@ -28,7 +28,7 @@
     padding: 0;
     border: none;
     outline: none;
-    background: #000d6b;
+    background: #2F7269;
     padding: 8px 0px;
 }
 
@@ -39,11 +39,11 @@
 }
 
 .car__item-btn a:hover {
-    color: #f9a826;
+    color: #A1757B;
 }
 
 .car__btn-details {
-    background: #f9a826;
+    background: #A1757B;
     border-radius: 0px 6px 6px 0px;
 }
 

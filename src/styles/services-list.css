@@ -2,7 +2,7 @@
 
 .service__item span i {
     font-size: 2.5rem;
-    color: #f9a826;
+    color: #A1757B;
 
 }
 
@@ -13,7 +13,7 @@
 }
 
 .service__item h6:hover {
-    color: #f9a826;
+    color: #A1757B;
     cursor: pointer;
 }
 
