@@ -59,7 +59,7 @@ const About = () => {
         <BecomeDriverSection></BecomeDriverSection>
 
 
-        <section>36
+        <section>
             <Container>
                 <Row>
                     <Col lg='12' className='mb-5 text-center' >

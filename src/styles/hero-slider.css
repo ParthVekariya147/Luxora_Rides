@@ -55,6 +55,7 @@
 .reserve__btn a{
     text-decoration: none;
     font-weight: 600;
+    color: #685454;
 }
 
 @media only screen and (max-width: 992px) {

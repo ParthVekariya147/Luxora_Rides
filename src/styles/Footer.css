@@ -16,7 +16,7 @@
 }
 
 .footer__logo-content {
-  color: rgba(69,23,29, 0.795);
+  color: rgba(65, 33, 53, 0.795);
   margin-top: 15px;
   line-height: 30px;
 }
@@ -27,7 +27,7 @@
 }
 
 .quick__link a {
-  color: rgba(69,23,29, 0.795);
+  color: rgba(69, 23, 29, 0.795);
   text-decoration: none;
   transition: 0.3s;
 }
@@ -41,7 +41,7 @@
 }
 
 .office__info {
-  color: rgba(69,23,29, 0.795);
+  color: rgba(69, 23, 29, 0.795);
   font-weight: 400;
 }
 
