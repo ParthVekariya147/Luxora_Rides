@@ -31,38 +31,38 @@ const carData = [
   automatic: "8‑Speed M Steptronic",
   description:
     "The 2025 BMW XM is a high-performance plug-in hybrid SUV combining M division engineering with electrification. It features a 4.4L TwinPower Turbo V8 paired with an electric motor, producing a combined 653 hp and 800 Nm of torque. The XM offers a bold design, a luxurious cabin with M Lounge seating, and advanced tech including curved displays and BMW iDrive 8.5.",
-},
+  },
 
   {
-    id: 2,
-    brand: "Mahindra",
-    rating: 170,
-    carName: "XUV400 EV",
-    imgUrl: img02, // Replace with actual image import or path
-    model: "XUV400 EL Pro",
-    price: 29000, // Approximate daily rent in INR
-    speed: "160 km/h",
-    gps: "Built-in GPS with Mahindra AdrenoX interface",
-    seatType: "Premium leatherette with contrast stitching",
-    automatic: "Single-speed automatic (EV)",
-    description:
-      "The Mahindra XUV400 is a feature-rich electric SUV designed for modern urban and highway travel. Powered by a 39.4 kWh battery, it offers a certified range of up to 456 km and can go from 0 to 100 km/h in 8.3 seconds. It supports fast charging, advanced connectivity, dual-tone styling, and a spacious cabin, making it a solid choice in the Indian EV market.",
+  id: 2,
+  brand: "Mahindra",
+  rating: 120,
+  carName: "Mahindra Scorpio-N",
+  imgUrl: img02, 
+  model: "Scorpio-N Z8L 2025",
+  price: 35000, 
+  speed: "165 km/h",
+  gps: "AdrenoX Connected Car Technology with GPS Navigation",
+  seatType: "Leatherette, 6/7-Seater, Reclining 2nd Row",
+  automatic: "6-Speed Automatic with Manual Mode",
+  description:
+    "The 2025 Mahindra Scorpio-N Z8L is a premium full-size SUV offering robust performance with a 2.2L mHawk diesel or 2.0L turbo petrol engine. Built on a ladder-frame chassis, it provides advanced features like dual-zone climate control, AdrenoX infotainment, Sony 3D sound system, and connected car tech, making it ideal for both urban and off-road adventures.",
   },
+
   {
-    id: 3,
-    brand: "Audi",
-    rating: 135,
-    carName: "Audi Q6 e-tron",
-    imgUrl: img03,
-    model: "Q6 e‑tron (2025)",
-    price: 30000,
-    speed: "209 km/h",
-    gps: 'MMI Navigation with 14.5" OLED touchscreen',
-    seatType:
-      "Leather/Vegan leather, Heated & Ventilated front, 3‑zone climate",
-    automatic: "direct drive (EV)",
-    description:
-      "The 2025 Audi Q6 e‑tron is a premium mid‑size electric SUV built on the new PPE platform (shared with Porsche Macan EV). Available in RWD single‑motor, AWD “quattro”, and high‑performance SQ6 trim. Features include curved dual displays, passenger touchscreen, AR HUD, and rapid 270 kW charging.",
+  id: 3,
+  brand: "Audi",
+  rating: 145,
+  carName: "Audi Q7",
+  imgUrl: img03,
+  model: "Q7 Technology 55 TFSI Quattro 2025",
+  price: 47000, 
+  speed: "250 km/h",
+  gps: "MMI Navigation Plus with Virtual Cockpit",
+  seatType: "Valcona Leather, 7-Seater with Power Adjustments",
+  automatic: "8-Speed Tiptronic Automatic with Quattro AWD",
+  description:
+    "The 2025 Audi Q7 55 TFSI Quattro offers a luxurious 7-seater SUV experience with a 3.0L V6 turbo petrol mild-hybrid engine producing 340 hp and 500 Nm torque. It features Audi’s Quattro all-wheel drive, adaptive air suspension, premium interiors with ambient lighting, panoramic sunroof, and advanced tech like Audi Virtual Cockpit and MMI Navigation Plus.",
   },
 
   {
@@ -70,9 +70,9 @@ const carData = [
     brand: "Tata",
     rating: 155,
     carName: "Tata Punch",
-    imgUrl: img04, // Replace with actual image import or path
+    imgUrl: img04, 
     model: "Creative Flagship Dual Tone",
-    price: 32000, // Approximate daily rent in INR
+    price: 32000, 
     speed: "150 km/h",
     gps: "Harman touchscreen infotainment with navigation support",
     seatType: "Fabric upholstery with dual-tone finish",

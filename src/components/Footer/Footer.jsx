@@ -25,7 +25,6 @@ const Footer = () => {
               <Link to="/home" className="d-flex align-items-center gap-2 text-decoration-none">
                 <img src={logo} alt="Luxora Rides Logo" className="footer__logo-img" />
                 <span className="footer__logo-text">Luxora_Rides</span>
-                <span className="footer__logo-subtext"><br />Pvt.Ltd</span>
               </Link>
             </div>
             <p className="footer__logo-content">
@@ -54,22 +53,26 @@ const Footer = () => {
               <h5 className="footer__link-title mb-4">Head Office</h5>
               <p className="office__info">A-101, Rajhans Realty, Dumas Road, near Airport, Surat, Gujarat 395007</p>
               <p className="office__info">Phone: +91 1234567890</p>
-              <p className="office__info">Email: abcdefghi123@gmail.com</p>
+              <p className="office__info">Email: luxora.rides@gmail.com</p>
               <p className="office__info">Office-Time: 09:00AM - 5:00PM [Mon - Fri]</p>
             </div>
           </Col>
 
-          {/* Footer Bottom Newsletter + Copyright */}
+          {/* Newsletter */}
+          <Col lg="12">
+            <div className="footer__newsletter text-center">
+              <h5 className="footer__link-title">Newsletter</h5>
+              <p className="section__description">Subscribe to our newsletter</p>
+              <div className="newsletter">
+                <input type="email" placeholder="Enter Your E-mail" />
+                <span><i className="ri-send-plane-line"></i></span>
+              </div>
+            </div>
+          </Col>
+
+          {/* Footer Bottom */}
           <Col lg="12">
             <div className="footer__bottom">
-              <div className="footer__newsletter text-center mb-3">
-                <h5 className="footer__link-title">Newsletter</h5>
-                <p className="section__description">Subscribe to our newsletter</p>
-                <div className="newsletter mx-auto">
-                  <input type="email" placeholder="Enter Your E-mail" />
-                  <span><i className="ri-send-plane-line"></i></span>
-                </div>
-              </div>
               <p className="section__description text-center mt-4">
                 <i className="ri-copyright-line"></i>
                 Copyright {year}, Developed By MasterMind. All Rights Reserved.
