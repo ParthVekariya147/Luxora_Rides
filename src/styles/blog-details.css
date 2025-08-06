@@ -1,6 +1,6 @@
 
 .blog__publisher span i {
-    color: #A1757B;
+    color: #f9a826;
 
 }
 
@@ -12,16 +12,16 @@ blockquote{
     width: 80px;
     height: 70px;
     border-radius: 30%;
-    border: 2px solid #2F7269;
+    border: 2px solid #000d6b;
     object-fit: cover;
 }
 
 .replay i {
-    color: #A1757B; 
+    color: #f9a826; 
 }
 
 .replay{
-    color: #2F7269;
+    color: #000d6b;
     font-weight: 600;
     cursor: pointer;
 }
@@ -36,14 +36,14 @@ blockquote{
 }
 
 .comment__btn{
-    background: #2F7269 !important;
-    color: #fff !important;
+    background: #000d6b !important;
+    color: #090909 !important;
 
 }
 
 .recent__blog-item h6 a {
     text-decoration: none;
-    color: #2F7269;
+    color: #000d6b;
     font-weight: 600;
 
 }

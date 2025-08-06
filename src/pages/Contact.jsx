@@ -60,7 +60,7 @@ const Contact = () => {
                                 <div className="contact__info">
                                     <h6 className="fw-bold">Contact Information</h6>
                                     <p className="section__description mb-0">
-                                        01, abcd Building, xyz chowk, Surat Gujarat 395010
+                                        A-101, Rajhans Realty, Dumas Road, near Airport, Surat, Gujarat 395007
                                     </p>
 
                                     <div className="d-flex align-items-center gap-2">

@@ -52,12 +52,13 @@ const Header = () => {
                     <div className="logo">
                         <h1>
                             <Link to='/home' className='d-flex align-items-center gap-2'>
-                                <img src={logo} alt="Luxora Rides" style={{ width: '40px', height: '40px' }} />
-                                <span style={{ color: '#2F7269', fontWeight: '600', textDecoration: 'none' }}>Luxora_Rides</span>
-                                <span style={{ color: '#2F7269', fontSize: '0.8rem', fontWeight: '400',textDecoration: 'none' }}><br/>Pvt.Ltd</span>
+                                <img src={logo} alt="Luxora Rides" className="logo__img" />
+                                <span style={{ color: '#000d6b', fontWeight: '600', textDecoration: 'none' }}>Luxora_Rides</span>
+                                <span style={{ color: '#000d6b', fontSize: '0.8rem', textDecoration: 'none' }}><br/>Pvt.Ltd</span>
                             </Link>
                         </h1>
                     </div>
+
                 </Col>
 
                 <Col lg='3' md='3' sm='4'>

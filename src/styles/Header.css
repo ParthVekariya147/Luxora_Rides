@@ -3,7 +3,7 @@
 
 .header__top{
     padding: 10px 0px;
-    background: #2F7269;
+    background: #000d6b;
     color: #fff;
 }
 
@@ -24,7 +24,7 @@
 }
 
 .header__top__help i{
-   color: #2F7269;
+   color: #000d6b;
    background: #fff;
    padding: 2px 4px;
    border-radius: 50%;
@@ -45,8 +45,13 @@
 
 .header__middle{
     padding: 20px 0px;
-
 }
+
+.logo__img {
+  height: 80px;
+  object-fit: contain;
+}
+
 
 .logo h1 a span {
     font-size: 1.5rem;
@@ -57,7 +62,7 @@
 }
 .logo h1 a{
     text-decoration: none;
-    color: #2F7269;
+    color: #000d6b;
     font-weight: 700;
 }
 .logo h1{
@@ -66,22 +71,22 @@
 
 .header__location span i {
     font-size: 2.2rem;
-    color: #2F7269;
+    color: #000d6b;
 }
 
 .header__location-content h4 {
     font-size: 1.2rem;
     font-weight: 700;
-    color: #2F7269;
+    color: #000d6b;
 }
 .header__location-content h6 {
     font-weight: 600;
-    color: #2F7269;
+    color: #000d6b;
 }
 
 
 .header__btn {
-    background: #2F7269 !important;
+    background: #000d6b !important;
     padding: 10px 20px;
     border: none;
     outline: none;
@@ -107,7 +112,7 @@
 
 .main__navbar{
     padding: 15px 0px;
-    background: #2F7269;
+    background: #000d6b;
     
 }
 
@@ -144,7 +149,7 @@
     display: flex;
     align-items: center;
     border-radius: 50px;
-    background: #438078;
+    background: #020a4de9;
 }
 
 .search__box input{
@@ -164,7 +169,7 @@
 }
 
 .nav__active{
-    color: #A1757B;
+    color: #f9a826;
 }
 
 
@@ -178,7 +183,7 @@
         }
 
         .navigation {
-            background: rgb(47,114,105);
+            background: rgb(0, 13, 107 , 0.6);
             width: 100%;
             height: 100%;
             position: fixed;
@@ -201,7 +206,7 @@
         }
 
         .menu a {
-            color: #2F7269;
+            color: #000d6b;
             font-size: 0.9rem;
             font-weight: 600;
         }

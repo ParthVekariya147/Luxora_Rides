@@ -1,42 +1,44 @@
 // import all images from assets/images directory
-import img01 from "../all-images/cars-img/mahindra-SUVs.jpg";
-import img02 from "../all-images/cars-img/Tata-Punch.jpg";
-import img03 from "../all-images/cars-img/mahindra-xev-9e.jpg";
-import img04 from "../all-images/cars-img/renault_kiger.jpg";
-import img05 from "../all-images/cars-img/MG_M9_EV.jpg";
-import img06 from "../all-images/cars-img/audi.png";
-import img07 from "../all-images/cars-img/bmw-offer.png";
-import img08 from "../all-images/cars-img/ferrari_amalfi.jpg";
-import img09 from "../all-images/cars-img/MG_cyberster_EV.jpg";
-import img10 from "../all-images/cars-img/Renault_Kwid.jpg";
-import img11 from "../all-images/cars-img/volvo_xc40.jpg";
-import img12 from "../all-images/cars-img/lexus-nx.jpg";
-import img13 from "../all-images/cars-img/jaguar-f-pace.jpg";
-import img14 from "../all-images/cars-img/porsche-macan.jpg";
+import img01 from "../all-images/cars-img/bmw-offer.png";
+import img02 from "../all-images/cars-img/mahindra-SUVs.jpg";
+import img03 from "../all-images/cars-img/audi.png";
+import img04 from "../all-images/cars-img/Tata-Punch.jpg";
+import img05 from "../all-images/cars-img/porsche-macan.jpg";
+import img06 from "../all-images/cars-img/lexus-nx.jpg";
+import img07 from "../all-images/cars-img/mahindra-xev-9e.jpg";
+import img08 from "../all-images/cars-img/renault_kiger.jpg";
+import img09 from "../all-images/cars-img/MG_M9_EV.jpg";
+import img10 from "../all-images/cars-img/ferrari_amalfi.jpg";
+import img11 from "../all-images/cars-img/MG_cyberster_EV.jpg";
+import img12 from "../all-images/cars-img/Renault_Kwid.jpg";
+import img13 from "../all-images/cars-img/volvo_xc40.jpg";
+import img14 from "../all-images/cars-img/jaguar-f-pace.jpg";
 import img15 from "../all-images/cars-img/honda-elevate.jpg";
 
 const carData = [
+  
+   {
+  id: 1,
+  brand: "BMW",
+  rating: 145,
+  carName: "BMW XM",
+  imgUrl: img01, // Replace with your imported image path
+  model: "G09‑Model‑2025",
+  price: 32000,
+  speed: "250 km/h",
+  gps: "BMW iDrive 8.5 with GPS Navigation",
+  seatType: "M Lounge Seating, Leather Upholstery",
+  automatic: "8‑Speed M Steptronic",
+  description:
+    "The 2025 BMW XM is a high-performance plug-in hybrid SUV combining M division engineering with electrification. It features a 4.4L TwinPower Turbo V8 paired with an electric motor, producing a combined 653 hp and 800 Nm of torque. The XM offers a bold design, a luxurious cabin with M Lounge seating, and advanced tech including curved displays and BMW iDrive 8.5.",
+},
+
   {
-    id: 7,
-    brand: "BMW",
-    rating: 132,
-    carName: "BMW 520i",
-    imgUrl: img07,
-    model: "G60‑Model‑2025",
-    price: 24000,
-    speed: "230km/h",
-    gps: "GPS Navigation",
-    seatType: "Leather, Heated Front Seats",
-    automatic: "8‑Speed ZF ",
-    description:
-      "The 2025 BMW 520i (Luxury Line) is part of the eighth-gen G60 5 Series, offering an efficient 2.0 L TwinPower Turbo inline‑4 producing ~208 PS and 330 Nm, mated to an 8‑speed automatic gearbox. It provides a premium cabin with adaptive LED lighting, advanced driver assistance, and a tech‑rich curved display setup.",
-  },
-  {
-    id: 1,
+    id: 2,
     brand: "Mahindra",
     rating: 170,
     carName: "XUV400 EV",
-    imgUrl: img01, // Replace with actual image import or path
+    imgUrl: img02, // Replace with actual image import or path
     model: "XUV400 EL Pro",
     price: 29000, // Approximate daily rent in INR
     speed: "160 km/h",
@@ -47,11 +49,11 @@ const carData = [
       "The Mahindra XUV400 is a feature-rich electric SUV designed for modern urban and highway travel. Powered by a 39.4 kWh battery, it offers a certified range of up to 456 km and can go from 0 to 100 km/h in 8.3 seconds. It supports fast charging, advanced connectivity, dual-tone styling, and a spacious cabin, making it a solid choice in the Indian EV market.",
   },
   {
-    id: 6,
+    id: 3,
     brand: "Audi",
     rating: 135,
     carName: "Audi Q6 e-tron",
-    imgUrl: img06,
+    imgUrl: img03,
     model: "Q6 e‑tron (2025)",
     price: 30000,
     speed: "209 km/h",
@@ -64,11 +66,11 @@ const carData = [
   },
 
   {
-    id: 2,
+    id: 4,
     brand: "Tata",
     rating: 155,
     carName: "Tata Punch",
-    imgUrl: img02, // Replace with actual image import or path
+    imgUrl: img04, // Replace with actual image import or path
     model: "Creative Flagship Dual Tone",
     price: 32000, // Approximate daily rent in INR
     speed: "150 km/h",
@@ -79,11 +81,11 @@ const carData = [
       "The Tata Punch is a compact SUV with a bold stance and top-tier safety, earning a 5-star Global NCAP rating. It features a 1.2L Revotron petrol engine, high ground clearance, smart infotainment, and city-friendly agility. The Punch blends performance and practicality, making it ideal for urban and occasional off-road use.",
   },
   {
-    id: 14,
+    id: 5,
     brand: "Porsche",
     rating: 205,
     carName: "Porsche Macan",
-    imgUrl: img14,
+    imgUrl: img05,
     model: "Macan 2.0 Turbo Petrol AWD",
     price: 57000,
     speed: "232 km/h",
@@ -95,11 +97,11 @@ const carData = [
   },
   
   {
-    id: 12,
+    id: 6,
     brand: "Lexus",
     rating: 190,
     carName: "Lexus NX 350h",
-    imgUrl: img12,
+    imgUrl: img06,
     model: "NX 350h Luxury AWD",
     price: 52000,
     speed: "200 km/h",
@@ -110,11 +112,11 @@ const carData = [
       "The Lexus NX 350h is a refined hybrid luxury SUV that blends power, efficiency, and advanced tech. It features a 2.5L petrol engine paired with an electric motor for smooth AWD performance. Notable highlights include a panoramic sunroof, Mark Levinson sound system, wireless Apple CarPlay, and Lexus Safety System+. A perfect mix of eco-friendliness and elegance.",
   },  
   {
-    id: 3,
+    id: 7,
     brand: "Mahindra",
     rating: 170,
     carName: "Mahindra XEV 9e",
-    imgUrl: img03,
+    imgUrl: img07,
     model: "XEV 9e Coupe Electric SUV",
     price: 26000,
     speed: "200 km/h",
@@ -126,11 +128,11 @@ const carData = [
   },
 
   {
-    id: 4,
+    id: 8,
     brand: "Renault",
     rating: 108,
     carName: "Renault Kiger Facelift",
-    imgUrl: img04,
+    imgUrl: img08,
     model: "Kiger Facelift",
     price: 19000,
     speed: " 0–100 km/h in 13 s",
@@ -142,11 +144,11 @@ const carData = [
   },
 
   {
-    id: 5,
+    id: 9,
     brand: "MG",
     rating: 140,
     carName: "MG M9 EV",
-    imgUrl: img05,
+    imgUrl: img09,
     model: "M9 Electric MPV",
     price: 25000,
     speed: "0–100 km/h in ~8.5 s",
@@ -158,11 +160,11 @@ const carData = [
   },
 
   {
-    id: 8,
+    id: 10,
     brand: "Ferrari",
     rating: 160,
     carName: "Ferrari 12Cilindri",
-    imgUrl: img08,
+    imgUrl: img10,
     model: "12Cilindri / Amalfi V12 GT (2025)",
     price: 42000,
     speed: "0–100 km/h in 2.9 s, Top speed 340 km/h",
@@ -175,11 +177,11 @@ const carData = [
   },
 
   {
-    id: 9,
+    id: 11,
     brand: "MG",
     rating: 145,
     carName: "MG Cyberster",
-    imgUrl: img09,
+    imgUrl: img11,
     model: "Cyberster EV Roadster (2025)",
     price: 45000,
     speed: "0–100 km/h in 3.2 s",
@@ -191,11 +193,11 @@ const carData = [
   },
 
   {
-    id: 10,
+    id: 12,
     brand: "Renault",
     rating: 112,
     carName: "Renault Kwid",
-    imgUrl: img10,
+    imgUrl: img12,
     model: "Climber 1.0 AMT Dual Tone",
     price: 28000,
     speed: "150 km/h",
@@ -207,11 +209,11 @@ const carData = [
   },
 
   {
-    id: 11,
+    id: 13,
     brand: "Volvo",
     rating: 185,
     carName: "Volvo XC40 Recharge",
-    imgUrl: img11,
+    imgUrl: img13,
     model: "XC40 Recharge Twin AWD",
     price: 45000,
     speed: "180 km/h",
@@ -224,11 +226,11 @@ const carData = [
 
 
   {
-    id: 13,
+    id: 14,
     brand: "Jaguar",
     rating: 195,
     carName: "Jaguar F-Pace",
-    imgUrl: img13,
+    imgUrl: img14,
     model: "F-Pace R-Dynamic S 2.0 Petrol AWD",
     price: 50000,
     speed: "217 km/h",
