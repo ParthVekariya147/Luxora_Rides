@@ -29,7 +29,7 @@ const HeroSlider = () => {
 
                         <h1 className='text-light mb-4'>Reserve now and get 40% off</h1>
 
-                        <button className="btn reserve__btn mt-4">
+                        <button className="btn reserve__btn mt-4 color">
                             <Link to='/cars'>Reserve Your Car Now</Link>
                         </button>
 

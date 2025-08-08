@@ -14,7 +14,6 @@ const Blog = () => {
 
                     <Row>
                         <BlogList />
-                        <BlogList />
                     </Row>
 
                 </Container>
