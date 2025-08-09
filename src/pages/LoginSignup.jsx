@@ -1,15 +1,96 @@
 import React, { useState } from "react";
+import { toast } from "react-hot-toast";
 
 const LoginSignup = () => {
   const [flip, setFlip] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const [loginEmail, setLoginEmail] = useState('');
+  const [loginPassword, setLoginPassword] = useState('');
+
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [signupEmail, setSignupEmail] = useState('');
+  const [signupPassword, setSignupPassword] = useState('');
+  const [phone, setPhone] = useState('');
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const response = await fetch('http://localhost:5000/api/users/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: loginEmail, password: loginPassword }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Login failed.');
+      }
+
+      const now = new Date();
+      const expiryTime = now.getTime() + 60 * 60 * 1000;
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('tokenExpiry', expiryTime);
+      
+      toast.success('Login Successful!');
+
+      setTimeout(() => {
+        window.location.href = '/';
+      }, 1500);
+
+    } catch (err) {
+      toast.error(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const response = await fetch('http://localhost:5000/api/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email: signupEmail,
+          password: signupPassword,
+          phone,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Signup failed.');
+      }
+
+      toast.success('Signup Successful! Please login.');
+      setFlip(false);
+
+    } catch (err) {
+      toast.error(err.message);
+    } finally {
+      setTimeout(() => setLoading(false), 500);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 flex items-center justify-center p-4">
       <div className="relative w-full max-w-4xl h-[600px] bg-white rounded-3xl shadow-2xl overflow-hidden">
-        {/* Animated Background Cover */}
         <div className={`absolute inset-0 transition-transform duration-700 ease-in-out ${flip ? 'translate-x-full' : 'translate-x-0'}`}>
           <div className="w-1/2 h-full bg-gradient-to-br from-pink-500 via-purple-600 to-indigo-600 flex flex-col items-center justify-center text-white p-8 relative overflow-hidden">
-            {/* Background decorative elements */}
             <div className="absolute top-10 left-10 w-20 h-20 bg-white/10 rounded-full"></div>
             <div className="absolute bottom-20 right-10 w-16 h-16 bg-white/10 rounded-full"></div>
             <div className="absolute top-1/3 right-5 w-12 h-12 bg-white/10 rounded-full"></div>
@@ -33,10 +114,8 @@ const LoginSignup = () => {
           </div>
         </div>
         
-        {/* Login Background (when signup is active) */}
         <div className={`absolute inset-0 transition-transform duration-700 ease-in-out ${flip ? 'translate-x-0' : '-translate-x-full'}`}>
           <div className="w-1/2 h-full bg-gradient-to-br from-blue-500 via-indigo-600 to-purple-600 flex flex-col items-center justify-center text-white p-8 relative overflow-hidden ml-auto">
-            {/* Background decorative elements */}
             <div className="absolute top-10 right-10 w-20 h-20 bg-white/10 rounded-full"></div>
             <div className="absolute bottom-20 left-10 w-16 h-16 bg-white/10 rounded-full"></div>
             <div className="absolute top-1/3 left-5 w-12 h-12 bg-white/10 rounded-full"></div>
@@ -53,14 +132,12 @@ const LoginSignup = () => {
           </div>
         </div>
 
-        {/* Forms Container */}
         <div className="relative z-10 w-full h-full flex">
-          {/* Login Form */}
           <div className={`absolute right-0 w-1/2 h-full p-8 flex flex-col justify-center transition-all duration-700 ease-in-out ${flip ? 'translate-x-full opacity-0' : 'translate-x-0 opacity-100'}`}>
             <div className="max-w-sm mx-auto w-full">
               <h3 className="text-3xl font-bold text-gray-800 mb-8 text-center">Welcome Back</h3>
               
-              <div className="space-y-6">
+              <form onSubmit={handleLogin} className="space-y-6">
                 <div className="relative group">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <svg className="h-5 w-5 text-gray-400 group-focus-within:text-purple-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -69,6 +146,8 @@ const LoginSignup = () => {
                   </div>
                   <input
                     type="email"
+                    value={loginEmail}
+                    onChange={(e) => setLoginEmail(e.target.value)}
                     placeholder="Enter your email"
                     className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
                   />
@@ -82,6 +161,8 @@ const LoginSignup = () => {
                   </div>
                   <input
                     type="password"
+                    value={loginPassword}
+                    onChange={(e) => setLoginPassword(e.target.value)}
                     placeholder="Enter your password"
                     className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
                   />
@@ -94,13 +175,11 @@ const LoginSignup = () => {
                 </div>
 
                 <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    // Handle login logic here
-                  }}
+                  type="submit"
+                  disabled={loading}
                   className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-3 rounded-xl font-semibold hover:from-purple-700 hover:to-indigo-700 transform hover:scale-105 transition-all duration-200 shadow-lg"
                 >
-                  Sign In
+                  {loading ? 'Logging in...' : 'Sign In'}
                 </button>
 
                 <div className="text-center">
@@ -113,17 +192,15 @@ const LoginSignup = () => {
                     Sign up now
                   </button>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
 
-          {/* Signup Form */}
           <div className={`absolute left-0 w-1/2 h-full p-6 flex flex-col justify-center transition-all duration-700 ease-in-out ${flip ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'} overflow-y-auto`}>
             <div className="max-w-sm mx-auto w-full">
               <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">Create Account</h3>
               
-              <div className="space-y-4">
-                {/* Full Name */}
+              <form onSubmit={handleSignup} className="space-y-4">
                 <div className="relative group">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <svg className="h-4 w-4 text-gray-400 group-focus-within:text-purple-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -132,26 +209,28 @@ const LoginSignup = () => {
                   </div>
                   <input
                     type="text"
-                    placeholder="Full Name"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                    placeholder="First Name"
                     className="w-full pl-10 pr-4 py-2.5 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
                   />
                 </div>
 
-                {/* Username */}
                 <div className="relative group">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <svg className="h-4 w-4 text-gray-400 group-focus-within:text-purple-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                     </svg>
                   </div>
                   <input
                     type="text"
-                    placeholder="Username"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                    placeholder="Last Name"
                     className="w-full pl-10 pr-4 py-2.5 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
                   />
                 </div>
 
-                {/* Email */}
                 <div className="relative group">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <svg className="h-4 w-4 text-gray-400 group-focus-within:text-purple-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -160,12 +239,13 @@ const LoginSignup = () => {
                   </div>
                   <input
                     type="email"
+                    value={signupEmail}
+                    onChange={(e) => setSignupEmail(e.target.value)}
                     placeholder="Email"
                     className="w-full pl-10 pr-4 py-2.5 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
                   />
                 </div>
 
-                {/* Phone Number */}
                 <div className="relative group">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <svg className="h-4 w-4 text-gray-400 group-focus-within:text-purple-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -174,12 +254,13 @@ const LoginSignup = () => {
                   </div>
                   <input
                     type="tel"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
                     placeholder="Phone Number"
                     className="w-full pl-10 pr-4 py-2.5 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
                   />
                 </div>
 
-                {/* Password */}
                 <div className="relative group">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <svg className="h-4 w-4 text-gray-400 group-focus-within:text-purple-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -188,58 +269,19 @@ const LoginSignup = () => {
                   </div>
                   <input
                     type="password"
+                    value={signupPassword}
+                    onChange={(e) => setSignupPassword(e.target.value)}
                     placeholder="Password"
                     className="w-full pl-10 pr-4 py-2.5 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
                   />
                 </div>
-
-                {/* Confirm Password */}
-                <div className="relative group">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <svg className="h-4 w-4 text-gray-400 group-focus-within:text-purple-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <input
-                    type="password"
-                    placeholder="Confirm Password"
-                    className="w-full pl-10 pr-4 py-2.5 text-sm border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
-                  />
-                </div>
-
-                {/* Gender Selection */}
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-700">Gender</label>
-                  <div className="flex space-x-4">
-                    <label className="flex items-center cursor-pointer">
-                      <input
-                        type="radio"
-                        name="gender"
-                        value="male"
-                        className="w-4 h-4 text-purple-600 border-gray-300 focus:ring-purple-500"
-                      />
-                      <span className="ml-2 text-sm text-gray-700">Male</span>
-                    </label>
-                    <label className="flex items-center cursor-pointer">
-                      <input
-                        type="radio"
-                        name="gender"
-                        value="female"
-                        className="w-4 h-4 text-purple-600 border-gray-300 focus:ring-purple-500"
-                      />
-                      <span className="ml-2 text-sm text-gray-700">Female</span>
-                    </label>
-                  </div>
-                </div>
-
+                
                 <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    // Handle signup logic here
-                  }}
+                  type="submit"
+                  disabled={loading}
                   className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-2.5 rounded-xl font-semibold hover:from-purple-700 hover:to-indigo-700 transform hover:scale-105 transition-all duration-200 shadow-lg text-sm"
                 >
-                  Create Account
+                  {loading ? 'Creating account...' : 'Create Account'}
                 </button>
 
                 <div className="text-center">
@@ -252,12 +294,11 @@ const LoginSignup = () => {
                     Sign in now
                   </button>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>
 
-        {/* Floating Elements for Visual Appeal */}
         <div className="absolute top-10 right-10 w-20 h-20 bg-purple-200 rounded-full opacity-20 animate-pulse"></div>
         <div className="absolute bottom-10 left-10 w-16 h-16 bg-blue-200 rounded-full opacity-20 animate-pulse delay-300"></div>
         <div className="absolute top-1/2 right-20 w-12 h-12 bg-pink-200 rounded-full opacity-20 animate-pulse delay-700"></div>
