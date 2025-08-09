@@ -48,11 +48,11 @@
 }
 
 .car__btn-details a:hover {
-    color: #0e122c !important;
+    color: #4a2c2c !important;
 }
 
 .car__btn-rent {
-    background: #0e122c;
+    background: #4a2c2c;
     border-radius: 6px 0px 0px 6px;
 }
 
