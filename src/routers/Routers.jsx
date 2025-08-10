@@ -9,6 +9,7 @@ import BlogDetails from '../pages/BlogDetails' ;
 import NotFound from '../pages/NotFound' ;
 import Contact from '../pages/Contact' ;
 import LoginSignup from '../pages/LoginSignup';
+import Register from '../pages/Register';
 
 const Routers = () => {
     return <Routes>
@@ -22,6 +23,7 @@ const Routers = () => {
              <Route path='/contact' element={<Contact />} />
               <Route path='*' element={<NotFound />} />
               <Route path='/Login' element={<LoginSignup/>} />
+                <Route path='/register' element={<Register/>} />
     </Routes>
 };
 
