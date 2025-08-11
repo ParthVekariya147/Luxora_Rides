@@ -1,5 +1,5 @@
 .footer {
-  background: #685454;
+  background: #6d42c7;
   padding-top: 50px;
   padding-bottom: 15px;
 }
@@ -16,7 +16,7 @@
 }
 
 .footer__logo-content {
-  color: rgba(65, 33, 53, 0.795);
+  color: rgba(131,217,239, 0.795);
   margin-top: 15px;
   line-height: 30px;
 }
@@ -27,13 +27,13 @@
 }
 
 .quick__link a {
-  color: rgba(69, 23, 29, 0.795);
+  color: rgba(131,217,239, 0.795);
   text-decoration: none;
   transition: 0.3s;
 }
 
 .quick__link a:hover {
-  color: #f3cba5;
+  color: #FF5D9E;
 }
 
 .footer__link-title {
@@ -41,7 +41,7 @@
 }
 
 .office__info {
-  color: rgba(69, 23, 29, 0.795);
+  color: rgba(131,217,239, 0.795);
   font-weight: 400;
 }
 
@@ -63,7 +63,7 @@
   padding: 8px 12px;
   border: 1px solid #7c8a972f;
   border-radius: 50px;
-  background: #402a23;
+  background: #372461;
   max-width: 400px;
   margin: 0 auto;
 }

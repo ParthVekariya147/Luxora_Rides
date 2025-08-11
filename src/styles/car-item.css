@@ -7,7 +7,7 @@
 }
 
 .car__item-info span i {
-    color: #f3cba5;
+    color: #FF5D9E;
     font-size: 1.1rem;
 }
 
@@ -28,7 +28,7 @@
     padding: 0;
     border: none;
     outline: none;
-    background: #685454;
+    background: #6d42c7;
     padding: 8px 0px;
 }
 
@@ -39,20 +39,20 @@
 }
 
 .car__item-btn a:hover {
-    color: #f3cba5;
+    color: #FF5D9E;
 }
 
 .car__btn-details {
-    background: #f3cba5;
+    background: #FF5D9E;
     border-radius: 0px 6px 6px 0px;
 }
 
 .car__btn-details a:hover {
-    color: #4a2c2c !important;
+    color: #352061 !important;
 }
 
 .car__btn-rent {
-    background: #4a2c2c;
+    background: #352061;
     border-radius: 6px 0px 0px 6px;
 }
 

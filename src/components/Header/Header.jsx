@@ -53,7 +53,7 @@ const Header = () => {
                         <h1>
                             <Link to='/home' className='d-flex align-items-center gap-2'>
                                 <img src={logo} alt="Luxora Rides" className="logo__img" />
-                                <span style={{ color: '#402a23', fontWeight: '600', textDecoration: 'none' }}>Luxora_Rides</span>
+                                <span style={{ color: '#6d42c7', fontWeight: '600', textDecoration: 'none' }}>Luxora_Rides</span>
                             </Link>
                         </h1>
                     </div>
