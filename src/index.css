@@ -4,7 +4,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --website: theme('colors.website'); /* Tailwind color mapped as CSS variable */
+  }
+}
+
+/* Font */
 body {
   @apply font-poppins;
 }
-  

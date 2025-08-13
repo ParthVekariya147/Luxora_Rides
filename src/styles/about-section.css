@@ -1,9 +1,13 @@
+@import './variables.css';
+
+
 .about__section-item {
     column-gap: 3rem;
 }
 
 .about__section-item p i {
-    color: #FF5D9E;
+    /* color: #FF5D9E; */
+    color: var(--website);
     font-size: 1.1rem;
 }
 

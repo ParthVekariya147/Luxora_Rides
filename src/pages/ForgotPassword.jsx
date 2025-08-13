@@ -1,29 +1,28 @@
 import React, { useState } from "react";
 import { toast } from "react-hot-toast";
-import { loginUser } from "../api/index";
+import { forgotPassword } from "../api/index";
 
-const Login = () => {
+const ForgotPassword = () => {
   const [loading, setLoading] = useState(false);
-  const [loginEmail, setLoginEmail] = useState("");
-  const [loginPassword, setLoginPassword] = useState("");
+  const [email, setEmail] = useState("");
 
   // Email validation regex
   const validateEmail = (email) => /\S+@\S+\.\S+/.test(email);
 
   /**
-   * Handles the login form submission.
-   * Validates user input and calls the login API.
+   * Handles the forgot password form submission.
+   * Validates user input and calls the forgot password API.
    * @param {React.FormEvent} e - The form event.
    */
-  const handleLogin = async (e) => {
+  const handleForgotPassword = async (e) => {
     e.preventDefault();
 
     // --- Validation ---
-    if (!loginEmail || !loginPassword) {
-      toast.error("Please fill all login fields.");
+    if (!email) {
+      toast.error("Please enter your email address.");
       return;
     }
-    if (!validateEmail(loginEmail)) {
+    if (!validateEmail(email)) {
       toast.error("Please enter a valid email address.");
       return;
     }
@@ -31,24 +30,15 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const data = await loginUser({
-        email: loginEmail,
-        password: loginPassword,
-      });
+      const data = await forgotPassword({ email });
 
-      // Store the data (including token) in localStorage on successful login
-      const now = new Date();
-      // Set token expiry to 1 hour from now
-      const expiryTime = now.getTime() + 60 * 60 * 1000;
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("tokenExpiry", expiryTime.toString());
-
-      toast.success("Login Successful!");
-
-      // Redirect to the homepage after a short delay
+      toast.success("Password reset code sent to your email!");
+      
+      // Redirect to verify OTP page after a short delay
       setTimeout(() => {
-        window.location.href = "/";
+        window.location.href = `/verify-otp?email=${encodeURIComponent(email)}`;
       }, 1500);
+
     } catch (err) {
       toast.error(err.message || "An unexpected error occurred.");
     } finally {
@@ -56,12 +46,12 @@ const Login = () => {
     }
   };
 
-  const navigateToRegister = () => {
-    window.location.href = "/register";
+  const navigateToLogin = () => {
+    window.location.href = "/login";
   };
 
-  const navigateToForgotPassword = () => {
-    window.location.href = "/forgot-password";
+  const navigateToRegister = () => {
+    window.location.href = "/register";
   };
 
   return (
@@ -73,7 +63,7 @@ const Login = () => {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-500/5 rounded-full blur-3xl animate-pulse delay-500"></div>
       </div>
 
-        <div className="w-full max-w-6xl bg-white/10 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 overflow-hidden relative z-10 flex flex-col md:flex-row">
+      <div className="w-full max-w-6xl bg-white/10 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 overflow-hidden relative z-10 flex flex-col md:flex-row">
         {/* Left Side - Welcome Section */}
         <div className="w-full md:w-1/2 bg-gradient-to-r from-purple-600/80 via-blue-600/80 to-indigo-600/80 backdrop-blur-sm text-white p-12 flex flex-col justify-center items-center relative">
           {/* Floating Elements */}
@@ -83,31 +73,31 @@ const Login = () => {
 
           <div className="relative z-10 text-center">
             <div className="w-32 h-32 bg-white/20 rounded-2xl flex items-center justify-center mb-8 backdrop-blur-sm mx-auto transform rotate-12 hover:rotate-0 transition-transform duration-300">
-              {/* --- CAR ICON SVG --- */}
+              {/* Key Icon SVG */}
               <svg
                 className="w-16 h-16 text-white"
                 fill="currentColor"
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11C5.84 5 5.28 5.42 5.08 6.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
+                <path d="M7 14c-1.66 0-3 1.34-3 3 0 1.31-1.16 2-2 2 .92 1.22 2.49 2 4 2 2.21 0 4-1.79 4-4 0-1.66-1.34-3-3-3zm13.71-9.37l-1.34-1.34c-.39-.39-1.02-.39-1.41 0L9 12.25 11.75 15l8.96-8.96c.39-.39.39-1.02 0-1.41z"/>
               </svg>
             </div>
-            <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">Welcome Back To Luxora</h1>
+            <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">Reset Your Password</h1>
             <p className="text-lg opacity-90 text-purple-100 leading-relaxed">
-              Sign in to unlock your digital experience
+              Enter your email address and we'll send you a verification code to reset your password
             </p>
           </div>
         </div>
 
-        {/* Right Side - Login Form */}
-        <div className="w-1/2 bg-white/5 backdrop-blur-sm p-12 flex flex-col justify-center">
+        {/* Right Side - Forgot Password Form */}
+        <div className="w-full md:w-1/2 bg-white/5 backdrop-blur-sm p-12 flex flex-col justify-center">
           <div className="max-w-sm mx-auto w-full">
             <h2 className="text-3xl font-bold text-white mb-8 text-center">
-              Sign In
+              Forgot Password
             </h2>
 
-            <form onSubmit={handleLogin} className="space-y-6">
+            <div className="space-y-6">
               <div className="relative group">
                 <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                   <svg
@@ -126,50 +116,15 @@ const Login = () => {
                 </div>
                 <input
                   type="email"
-                  value={loginEmail}
-                  onChange={(e) => setLoginEmail(e.target.value)}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
                   className="w-full pl-12 pr-4 py-4 bg-white/10 border border-white/20 rounded-2xl text-white placeholder-purple-200 focus:bg-white/20 focus:border-purple-400 focus:outline-none transition-all duration-300 backdrop-blur-sm hover:bg-white/15"
                 />
               </div>
 
-              <div className="relative group">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                  <svg
-                    className="h-5 w-5 text-purple-300 group-focus-within:text-purple-400 transition-colors duration-300"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                    />
-                  </svg>
-                </div>
-                <input
-                  type="password"
-                  value={loginPassword}
-                  onChange={(e) => setLoginPassword(e.target.value)}
-                  placeholder="Enter your password"
-                  className="w-full pl-12 pr-4 py-4 bg-white/10 border border-white/20 rounded-2xl text-white placeholder-purple-200 focus:bg-white/20 focus:border-purple-400 focus:outline-none transition-all duration-300 backdrop-blur-sm hover:bg-white/15"
-                />
-              </div>
-
-              <div className="text-right">
-                <button
-                  type="button"
-                  onClick={navigateToForgotPassword}
-                  className="text-purple-300 hover:text-white text-sm font-medium transition-colors duration-300 hover:underline"
-                >
-                  Forgot password?
-                </button>
-              </div>
-
               <button
-                type="submit"
+                onClick={handleForgotPassword}
                 disabled={loading}
                 className="w-full bg-gradient-to-r from-purple-500 via-blue-500 to-indigo-500 text-white py-4 rounded-2xl font-semibold hover:from-purple-600 hover:via-blue-600 hover:to-indigo-600 transform hover:scale-[1.02] hover:shadow-2xl transition-all duration-300 shadow-lg disabled:opacity-70 disabled:scale-100 disabled:cursor-not-allowed relative overflow-hidden group"
               >
@@ -178,25 +133,35 @@ const Login = () => {
                   {loading ? (
                     <div className="flex items-center justify-center space-x-2">
                       <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                      <span>Signing in...</span>
+                      <span>Sending...</span>
                     </div>
                   ) : (
-                    "Sign In"
+                    "Send Reset Code"
                   )}
                 </span>
               </button>
 
-              <div className="text-center">
-                <span className="text-purple-200">Don't have an account? </span>
-                <button
-                  type="button"
-                  onClick={navigateToRegister}
-                  className="text-white hover:text-purple-300 font-semibold transition-colors duration-300 hover:underline"
-                >
-                  Sign up now
-                </button>
+              <div className="text-center space-y-4">
+                <div>
+                  <span className="text-purple-200">Remember your password? </span>
+                  <button
+                    onClick={navigateToLogin}
+                    className="text-white hover:text-purple-300 font-semibold transition-colors duration-300 hover:underline"
+                  >
+                    Sign in
+                  </button>
+                </div>
+                <div>
+                  <span className="text-purple-200">Don't have an account? </span>
+                  <button
+                    onClick={navigateToRegister}
+                    className="text-white hover:text-purple-300 font-semibold transition-colors duration-300 hover:underline"
+                  >
+                    Sign up now
+                  </button>
+                </div>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
@@ -204,4 +169,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ForgotPassword;

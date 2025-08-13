@@ -6,6 +6,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        website: "#b8cb08ff",
+        // website: "#8f71ff",
+      },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
       },
@@ -13,6 +17,6 @@ module.exports = {
   },
   plugins: [],
   corePlugins: {
-    preflight: false, // Bootstrap conflict avoid કરવા માટે
+    preflight: false,
   },
 }
