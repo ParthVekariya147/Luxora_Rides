@@ -1,10 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
 import { forgotPassword } from "../api/index";
+import { useAuth } from "../context/AuthContext";
 
 const ForgotPassword = () => {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
+  const [csrfToken, setCsrfToken] = useState("");
+
+  const { generateCSRF: generateCSRFContext } = useAuth();
+
+  // Generate CSRF token on component mount
+  useEffect(() => {
+    const token = generateCSRFContext("forgot-password-form");
+    setCsrfToken(token);
+  }, [generateCSRFContext]);
 
   // Email validation regex
   const validateEmail = (email) => /\S+@\S+\.\S+/.test(email);
@@ -27,10 +37,16 @@ const ForgotPassword = () => {
       return;
     }
 
+    // Check if CSRF token exists
+    if (!csrfToken) {
+      toast.error("Security token missing. Please refresh the page.");
+      return;
+    }
+
     setLoading(true);
 
     try {
-      const data = await forgotPassword({ email });
+      const data = await forgotPassword({ email }, csrfToken);
 
       toast.success("Password reset code sent to your email!");
       

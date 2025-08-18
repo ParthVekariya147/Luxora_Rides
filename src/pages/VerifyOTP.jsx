@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { toast } from "react-hot-toast";
 import { verifyOTP, resendOTP } from "../api/index";
+import { useAuth } from "../context/AuthContext";
 
 const VerifyOTP = () => {
   const [loading, setLoading] = useState(false);
@@ -9,7 +10,10 @@ const VerifyOTP = () => {
   const [email, setEmail] = useState("");
   const [countdown, setCountdown] = useState(60);
   const [canResend, setCanResend] = useState(false);
+  const [csrfToken, setCsrfToken] = useState("");
   const inputRefs = useRef([]);
+
+  const { generateCSRF: generateCSRFContext } = useAuth();
 
   useEffect(() => {
     // Get email from URL params
@@ -18,6 +22,10 @@ const VerifyOTP = () => {
     if (emailParam) {
       setEmail(decodeURIComponent(emailParam));
     }
+
+    // Generate CSRF token on component mount
+    const token = generateCSRFContext("verify-otp-form");
+    setCsrfToken(token);
 
     // Start countdown timer
     const timer = setInterval(() => {
@@ -31,7 +39,7 @@ const VerifyOTP = () => {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [generateCSRFContext]);
 
   const handleOtpChange = (index, value) => {
     if (value.length > 1) return; // Prevent multiple characters
@@ -62,13 +70,19 @@ const VerifyOTP = () => {
       return;
     }
 
+    // Check if CSRF token exists
+    if (!csrfToken) {
+      toast.error("Security token missing. Please refresh the page.");
+      return;
+    }
+
     setLoading(true);
 
     try {
-      const data = await verifyOTP({ 
+      const data = await verifyOTP({
         email: email,
-        otp: otpString 
-      });
+        otp: otpString
+      }, csrfToken);
 
       toast.success("OTP verified successfully!");
       
@@ -102,7 +116,7 @@ const VerifyOTP = () => {
       console.log("Final reset token:", resetToken ? "Found" : "Not found");
       
       if (resetToken) {
-        console.log("Redirecting with token..."); 
+        console.log("Redirecting with token...");
         // Redirect to reset password page with both email and token
         setTimeout(() => {
           window.location.href = `/reset-password?email=${encodeURIComponent(email)}&token=${encodeURIComponent(resetToken)}`;
@@ -128,8 +142,15 @@ const VerifyOTP = () => {
   const handleResendOTP = async () => {
     setResendLoading(true);
 
+    // Check if CSRF token exists
+    if (!csrfToken) {
+      toast.error("Security token missing. Please refresh the page.");
+      setResendLoading(false);
+      return;
+    }
+
     try {
-      const data = await resendOTP({ email });
+      const data = await resendOTP({ email }, csrfToken);
 
       toast.success("New OTP sent to your email!");
       

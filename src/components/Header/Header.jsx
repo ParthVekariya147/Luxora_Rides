@@ -4,6 +4,7 @@ import { Container , Row , Col } from 'reactstrap';
 import { Link , NavLink } from 'react-router-dom';
 import logo from '../../assets/all-images/logo.png'; // ✅ Add your logo image
 import '../../styles/Header.css' ;
+import { useAuth } from '../../context/AuthContext';
 
 const navLinks = [
     { path:'/home', display: 'Home' },
@@ -14,7 +15,7 @@ const navLinks = [
 ];
 
 const Header = () => {
-
+    const { isAuthenticated, logout } = useAuth();
     const menuRef = useRef(null);
     const toggleMenu = () => menuRef.current.classList.toggle('menu__active');
 
@@ -35,9 +36,18 @@ const Header = () => {
 
                 <Col lg="6" md="6" sm="6">
                     <div className="header__top__right d-flex align-items-center justify-content-end gap-3">
-                        <Link to='/Login' className='d-flex align-items-center gap-2'> 
-                            <i className="ri-user-add-line"></i> Signup
-                        </Link>
+                        {isAuthenticated ? (
+                            <button
+                                onClick={logout}
+                                className='d-flex align-items-center gap-2 btn btn-outline-light'
+                            >
+                                <i className="ri-logout-box-line"></i> Logout
+                            </button>
+                        ) : (
+                            <Link to='/Login' className='d-flex align-items-center gap-2'>
+                                <i className="ri-user-add-line"></i> Signup
+                            </Link>
+                        )}
                     </div>
                 </Col>
             </Row>
