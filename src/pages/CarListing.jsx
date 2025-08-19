@@ -14,6 +14,13 @@ const CarListing = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+        const handleRentClick = () => {
+        // Save car ID to localStorage
+        localStorage.setItem('rentedCarId', item.id || item._id);
+        alert(`Car ID ${item.id || item._id} stored for rent`);
+    };
+
+
     useEffect(() => {
         const fetchCars = async () => {
             try {
