@@ -10,8 +10,6 @@ import { generateAndStoreCSRFToken, validateCSRFToken } from '../utils/tokenUtil
  * @param {string} csrfToken - CSRF token for form protection.
  */
 export const loginUser = async (userData, csrfToken) => {
-  // અહીંથી ફક્ત એન્ડપોઇન્ટ '/users/login' અને ડેટા (userData) મોકલો.
-  // બાકીનું બધું કામ ClientHttp સંભાળી લેશે.
   return ClientHttp.post('/users/login', userData, null, csrfToken);
 };
 

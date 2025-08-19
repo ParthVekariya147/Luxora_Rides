@@ -31,55 +31,60 @@ const Login = () => {
   // Email validation regex
   const validateEmail = (email) => /\S+@\S+\.\S+/.test(email);
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
+const handleLogin = async (e) => {
+  e.preventDefault();
 
-    if (!loginEmail || !loginPassword) {
-      toast.error("Please fill all login fields.");
-      return;
-    }
-    if (!validateEmail(loginEmail)) {
-      toast.error("Please enter a valid email address.");
-      return;
-    }
-    if (!csrfToken) {
-      toast.error("Security token missing. Please refresh the page.");
-      return;
-    }
-    setLoading(true);
+  if (!loginEmail || !loginPassword) {
+    toast.error("Please fill all login fields.");
+    return;
+  }
+  if (!validateEmail(loginEmail)) {
+    toast.error("Please enter a valid email address.");
+    return;
+  }
+  if (!csrfToken) {
+    toast.error("Security token missing. Please refresh the page.");
+    return;
+  }
+  setLoading(true);
 
-    try {
-      const res = await loginUser(
-        { email: loginEmail, password: loginPassword },
-        csrfToken
-      );
-      console.log("🔑 Login API response:", res);
+  try {
+    const res = await loginUser(
+      { email: loginEmail, password: loginPassword },
+      csrfToken
+    );
+    console.log("🔑 Login API response:", res);
 
-      // Extract token from API response
-      const token = res?.data?.token;
-      if (!token) {
-        toast.error("Login failed: Token missing in response");
-        setLoading(false);
-        return;
-      }
-
-      // Store token securely in sessionStorage
-      setSecureTokenCookie(token);
-
-      // Update auth context
-      login(token);
-
-      // toast.success("Login successful!");
-
-      setTimeout(() => {
-        navigate("/home");
-      }, 1200);
-    } catch (err) {
-      toast.error(err.message || "An unexpected error occurred.");
-    } finally {
+    // Extract token from API response
+    const token = res?.data?.token;
+    if (!token) {
+      toast.error("Login failed: Token missing in response");
       setLoading(false);
+      return;
     }
-  };
+
+    // Extract user email from response
+    const email = res?.data?.user?.email;
+    if (email) {
+      sessionStorage.setItem("userEmail", email);  // Store email in sessionStorage
+    }
+
+    // Store token securely in sessionStorage or cookies (your existing logic)
+    setSecureTokenCookie(token);
+
+    // Update auth context
+    login(token);
+
+    setTimeout(() => {
+      navigate("/home");
+    }, 1200);
+  } catch (err) {
+    toast.error(err.message || "An unexpected error occurred.");
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   const navigateToRegister = () => {
     navigate("/register");
