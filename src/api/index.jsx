@@ -86,3 +86,146 @@ export const generateCSRF = (formId) => {
 export const validateCSRF = (formId, token) => {
   return validateCSRFToken(formId, token);
 };
+
+/**
+ * Create Booking API function
+ * @param {object} bookingData - The booking information
+ * @param {string} csrfToken - CSRF token for form protection
+ */
+export const createBooking = async (bookingData, csrfToken) => {
+  return ClientHttp.post('/bookings', bookingData, null, csrfToken);
+};
+
+/**
+ * Fetch all cars (public access)
+ * @returns {Promise} Promise object represents the list of cars
+ */
+export const listCars = async () => {
+  try {
+    const response = await ClientHttp.get('/cars');
+    return response;
+  } catch (error) {
+    console.error('Error fetching cars:', error);
+    throw error;
+  }
+};
+
+/**
+ * Fetch available cars
+ * @returns {Promise} Promise object represents the list of available cars
+ */
+export const getAvailableCars = async () => {
+  try {
+    const response = await ClientHttp.get('/cars/available');
+    return response;
+  } catch (error) {
+    console.error('Error fetching available cars:', error);
+    throw error;
+  }
+};
+
+/**
+ * Fetch featured cars
+ * @returns {Promise} Promise object represents the list of featured cars
+ */
+export const getFeaturedCars = async () => {
+  try {
+    const response = await ClientHttp.get('/cars/featured');
+    return response;
+  } catch (error) {
+    console.error('Error fetching featured cars:', error);
+    throw error;
+  }
+};
+
+/**
+ * Fetch cars by brand
+ * @param {string} brand - The brand name
+ * @returns {Promise} Promise object represents the list of cars by brand
+ */
+export const getCarsByBrand = async (brand) => {
+  try {
+    const response = await ClientHttp.get(`/cars/brand/${brand}`);
+    return response;
+  } catch (error) {
+    console.error(`Error fetching cars by brand ${brand}:`, error);
+    throw error;
+  }
+};
+
+/**
+ * Fetch cars by seating capacity
+ * @param {number} capacity - The seating capacity
+ * @returns {Promise} Promise object represents the list of cars by seating capacity
+ */
+export const getCarsBySeatingCapacity = async (capacity) => {
+  try {
+    const response = await ClientHttp.get(`/cars/seating/${capacity}`);
+    return response;
+  } catch (error) {
+    console.error(`Error fetching cars by seating capacity ${capacity}:`, error);
+    throw error;
+  }
+};
+
+/**
+ * Search cars by query parameters
+ * @param {object} params - Search parameters
+ * @returns {Promise} Promise object represents the search results
+ */
+export const searchCars = async (params) => {
+  try {
+    const queryString = new URLSearchParams(params).toString();
+    const response = await ClientHttp.get(`/cars/search?${queryString}`);
+    return response;
+  } catch (error) {
+    console.error('Error searching cars:', error);
+    throw error;
+  }
+};
+
+/**
+ * Fetch cars by price range
+ * @param {object} params - Price range parameters (minPrice, maxPrice)
+ * @returns {Promise} Promise object represents the list of cars within price range
+ */
+export const getCarsByPriceRange = async (params) => {
+  try {
+    const queryString = new URLSearchParams(params).toString();
+    const response = await ClientHttp.get(`/cars/price-range?${queryString}`);
+    return response;
+  } catch (error) {
+    console.error('Error fetching cars by price range:', error);
+    throw error;
+  }
+};
+
+/**
+ * Fetch car by ID
+ * @param {string} carId - The car ID
+ * @returns {Promise} Promise object represents the car details
+ */
+export const getCarById = async (carId) => {
+  try {
+    const response = await ClientHttp.get(`/cars/${carId}`);
+    return response;
+  } catch (error) {
+    console.error(`Error fetching car by ID ${carId}:`, error);
+    throw error;
+  }
+};
+
+/**
+ * Fetch car recommendations
+ * @param {string} carId - The car ID
+ * @returns {Promise} Promise object represents the recommended cars
+ */
+export const getCarRecommendations = async (carId) => {
+  try {
+    const response = await ClientHttp.get(`/cars/${carId}/recommendations`);
+    return response;
+  } catch (error) {
+    console.error(`Error fetching car recommendations for ID ${carId}:`, error);
+    throw error;
+  }
+};

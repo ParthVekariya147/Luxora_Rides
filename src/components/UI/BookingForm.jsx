@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { Form, FormGroup, Label, Input } from "reactstrap";
+import { toast } from "react-hot-toast";
+import { createBooking } from "../../api";
+import { generateAndStoreCSRFToken } from "../../utils/tokenUtils";
 import "../../styles/booking-form.css";
 
 const BookingForm = () => {
@@ -18,21 +21,59 @@ const BookingForm = () => {
   });
 
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
     // Simple validation example
     if (!formData.firstName || !formData.lastName || !formData.email) {
       setError("⚠ Please fill in all required fields.");
       return;
     }
+    
+    // Reset errors and set loading state
     setError("");
-    alert("✅ Booking information submitted successfully!");
-    // you can now send formData to your API/backend
+    setLoading(true);
+    setSuccess(false);
+    
+    try {
+      // Generate CSRF token for form protection
+      const csrfToken = generateAndStoreCSRFToken('booking-form');
+      
+      // Call the API to create booking
+      await createBooking(formData, csrfToken);
+      
+      // Show success message
+      setSuccess(true);
+      toast.success("✅ Booking information submitted successfully!");
+      
+      // Reset form
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        mobile: "",
+        from: "",
+        to: "",
+        persons: "1 person",
+        luggage: "1 luggage",
+        date: "",
+        time: "",
+        notes: "",
+      });
+    } catch (err) {
+      // Handle error
+      setError("⚠ " + (err.message || "Failed to submit booking. Please try again."));
+      toast.error("❌ Failed to submit booking. Please try again.");
+    } finally {
+      // Reset loading state
+      setLoading(false);
+    }
   };
 
   return (
@@ -176,10 +217,11 @@ const BookingForm = () => {
         </div>
 
         {error && <p className="text-danger small">{error}</p>}
+        {success && <p className="text-success small">✅ Booking submitted successfully!</p>}
 
         <div className="text-center mt-4">
-          <button type="submit" className="btn btn-primary px-5 py-2">
-            Submit Booking
+          <button type="submit" className="btn btn-primary px-5 py-2" disabled={loading}>
+            {loading ? "Submitting..." : "Submit Booking"}
           </button>
         </div>
       </Form>

@@ -26,7 +26,7 @@ const Routers = () => {
           <CarListing />
         </ProtectedRoute>
       } />
-      <Route path="/cars/:slug" element={
+      <Route path="/cars/:carId" element={
         <ProtectedRoute>
           <CarDetails />
         </ProtectedRoute>
