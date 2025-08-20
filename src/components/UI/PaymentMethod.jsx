@@ -23,7 +23,7 @@ const PaymentMethod = () => {
 
       <div className="form-check border p-3 rounded mb-3">
         <input
-          className="form-check-input"
+          className="form-check-input"np
           type="radio"
           name="payment"
           id="bank"
