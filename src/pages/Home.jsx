@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container , Row , Col } from 'reactstrap';
 
 import Helmet from '../components/Helmet/Helmet';
@@ -7,13 +7,34 @@ import FindCarForm from '../components/UI/FindCarForm';
 import HeroSlider from '../components/UI/HeroSlider';
 import ServicesList from '../components/UI/ServicesList';
 
-import carData from '../assets/data/carData';
 import CarItem from '../components/UI/CarItem';
 import BecomeDriverSection from '../components/UI/BecomeDriverSection';
 import BlogList from '../components/UI/BlogList';
+import { getFeaturedCars } from '../api/index';
 
 
 const Home = () => {
+    const [cars, setCars] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const fetchFeaturedCars = async () => {
+            try {
+                const response = await getFeaturedCars();
+                // Check if response is an array, if not, try to extract cars array from response
+                const carsData = Array.isArray(response) ? response : (response.cars || response.data || []);
+                setCars(carsData);
+                setLoading(false);
+            } catch (err) {
+                setError(err.message);
+                setLoading(false);
+            }
+        };
+
+        fetchFeaturedCars();
+    }, []);
+
     return <Helmet title='Home'>
 
     {/* ============== HERO SECTION ============== */}
@@ -71,9 +92,23 @@ const Home = () => {
                 </Col>
 
                 {
-                    carData.slice(0 , 9).map((item) => (
-                        <CarItem item={item} key={item.id} />
-                    ))
+                    loading ? (
+                        <Col lg='12'>
+                            <div className="text-center mt-5">
+                                <h4>Loading featured cars...</h4>
+                            </div>
+                        </Col>
+                    ) : error ? (
+                        <Col lg='12'>
+                            <div className="text-center mt-5">
+                                <h4>Error: {error}</h4>
+                            </div>
+                        </Col>
+                    ) : (
+                        cars.slice(0, 9).map((item) => (
+                            <CarItem item={item} key={item._id} />
+                        ))
+                    )
                 }
 
             </Row>

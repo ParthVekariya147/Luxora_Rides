@@ -31,55 +31,67 @@ const Login = () => {
   // Email validation regex
   const validateEmail = (email) => /\S+@\S+\.\S+/.test(email);
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
+const handleLogin = async (e) => {
+  e.preventDefault();
 
-    if (!loginEmail || !loginPassword) {
-      toast.error("Please fill all login fields.");
-      return;
-    }
-    if (!validateEmail(loginEmail)) {
-      toast.error("Please enter a valid email address.");
-      return;
-    }
-    if (!csrfToken) {
-      toast.error("Security token missing. Please refresh the page.");
-      return;
-    }
-    setLoading(true);
+  if (!loginEmail || !loginPassword) {
+    toast.error("Please fill all login fields.");
+    return;
+  }
+  if (!validateEmail(loginEmail)) {
+    toast.error("Please enter a valid email address.");
+    return;
+  }
+  if (!csrfToken) {
+    toast.error("Security token missing. Please refresh the page.");
+    return;
+  }
 
-    try {
-      const res = await loginUser(
-        { email: loginEmail, password: loginPassword },
-        csrfToken
-      );
-      console.log("🔑 Login API response:", res);
+  setLoading(true);
 
-      // Extract token from API response
-      const token = res?.data?.token;
-      if (!token) {
-        toast.error("Login failed: Token missing in response");
-        setLoading(false);
-        return;
-      }
+  try {
+    const res = await loginUser(
+      { email: loginEmail, password: loginPassword },
+      csrfToken
+    );
+    console.log("🔑 Login API response:", res);
 
-      // Store token securely in sessionStorage
-      setSecureTokenCookie(token);
-
-      // Update auth context
-      login(token);
-
-      // toast.success("Login successful!");
-
-      setTimeout(() => {
-        navigate("/home");
-      }, 1200);
-    } catch (err) {
-      toast.error(err.message || "An unexpected error occurred.");
-    } finally {
+    // Extract token from API response
+    const token = res?.data?.token;
+    if (!token) {
+      toast.error("Login failed: Token missing in response");
       setLoading(false);
+      return;
     }
-  };
+
+    // Extract user email from response
+    const email = res?.data?.user?.email;
+    if (email) {
+      sessionStorage.setItem("userEmail", email);  // Store email in sessionStorage
+    }
+
+    // Store token securely in sessionStorage or cookies (your existing logic)
+    setSecureTokenCookie(token);
+
+    // Update auth context
+    login(token);
+
+    setTimeout(() => {
+      navigate("/home");
+    }, 1200);
+  } catch (err) {
+    // Show error message but do NOT clear the input fields
+    toast.error(
+      err.response?.data?.message || // if your API returns error message in response.data.message
+      err.message ||
+      "An unexpected error occurred."
+    );
+  } finally {
+    setLoading(false);
+  }
+};
+
+
 
   const navigateToRegister = () => {
     navigate("/register");
@@ -195,6 +207,7 @@ const Login = () => {
                 type="submit"
                 disabled={loading}
                 className="w-full bg-gradient-to-r from-purple-500 via-blue-500 to-indigo-500 text-white py-4 rounded-2xl font-semibold hover:from-purple-600 hover:via-blue-600 hover:to-indigo-600 transform hover:scale-[1.02] hover:shadow-2xl transition-all duration-300 shadow-lg disabled:opacity-70 disabled:scale-100 disabled:cursor-not-allowed relative overflow-hidden group"
+                onClick={(e) => e.preventDefault}
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <span className="relative z-10">

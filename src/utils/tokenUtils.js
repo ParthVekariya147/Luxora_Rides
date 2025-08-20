@@ -181,6 +181,8 @@ export const removeSecureTokenCookie = () => {
   try {
     sessionStorage.removeItem('authToken');
     sessionStorage.removeItem('tokenExpiry');
+    sessionStorage.removeItem('userEmail');
+    
   } catch (error) {
     console.error('Error removing secure token cookie:', error);
   }
