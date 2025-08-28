@@ -47,8 +47,10 @@
 }
 
 .logo__img {
-  height: 60px;
+  height: 70px;
   object-fit: contain;
+  padding-top: 5px;
+  
 }
 
 .logo h1 a span {
