@@ -6,9 +6,13 @@
 }
 
 .about__section-item p i {
-    /* color: #FF5D9E; */
-    color: var(--website);
+    color: #00BCD4;
+    /*color: var(--website);*/
     font-size: 1.1rem;
+}
+
+.section__subtitle{
+    margin-top: 50px;
 }
 
 @media only screen and (max-width: 992px) {

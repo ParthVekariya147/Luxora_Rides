@@ -1,5 +1,5 @@
 .footer {
-  background: #6d42c7;
+  background: #6d42c7; /* Primary purple */
   padding-top: 50px;
   padding-bottom: 15px;
 }
@@ -16,7 +16,7 @@
 }
 
 .footer__logo-content {
-  color: rgba(131,217,239, 0.795);
+  color: #b39ddb; /* Changed from rgba(131,217,239, 0.795) to a lighter purple */
   margin-top: 15px;
   line-height: 30px;
 }
@@ -27,13 +27,13 @@
 }
 
 .quick__link a {
-  color: rgba(131,217,239, 0.795);
+  color: #b39ddb; /* Changed from rgba(131,217,239, 0.795) to a lighter purple */
   text-decoration: none;
   transition: 0.3s;
 }
 
 .quick__link a:hover {
-  color: #FF5D9E;
+  color: #00BCD4; /* Changed from #FF5D9E (pink) to teal */
 }
 
 .footer__link-title {
@@ -41,7 +41,7 @@
 }
 
 .office__info {
-  color: rgba(131,217,239, 0.795);
+  color: #b39ddb; /* Changed from rgba(131,217,239, 0.795) to a lighter purple */
   font-weight: 400;
 }
 
@@ -63,7 +63,7 @@
   padding: 8px 12px;
   border: 1px solid #7c8a972f;
   border-radius: 50px;
-  background: #372461;
+  background: #372461; /* Darker purple */
   max-width: 400px;
   margin: 0 auto;
 }
@@ -111,4 +111,3 @@
     gap: 5px;
   }
 }
-

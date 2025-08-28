@@ -99,7 +99,7 @@ const BlogDetails = () => {
                                     <textarea rows="3" className='py-2 px-3 w-100' placeholder='Comment ...'></textarea>
                                 </FormGroup>
 
-                                <button className="btn mt-3 comment__btn">Post a Comment</button>
+                                <button className="btn mt-3 comment__btn mb-5">Post a Comment</button>
                             </Form>
 
 

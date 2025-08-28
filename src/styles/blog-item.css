@@ -20,7 +20,7 @@
  
 .read__more{
     font-size: 1.0rem;
-    color: #FF5D9E;
+    color: #00BCD4;
 }
 
 .read__more:hover{
@@ -28,7 +28,7 @@
 }
 
 .blog__time span i {
-    color: #FF5D9E;
+    color: #00BCD4;
 }
 
 .blog__author {
@@ -49,7 +49,7 @@
 }
 
 .blog__title:hover {
-    color: #FF5D9E;
+    color: #00BCD4;
 }
 
 @media only screen and (max-width:768px) {

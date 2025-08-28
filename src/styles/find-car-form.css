@@ -1,7 +1,7 @@
 
 
 .find__cars-left{
-    background: linear-gradient(rgb(255,93,158 , 0.9) , rgb(255,93,158, 0.9)), url('../assets/all-images/superSpeed.png');
+    background: linear-gradient(rgb(0, 188, 212 , 0.9) , rgb(0, 188, 212, 0.9)), url('../assets/all-images/superSpeed.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -76,7 +76,7 @@
 }
 
 .find__car-btn{
-    background: #FF5D9E !important;
+    background: #00BCD4 !important;
     color: #fff !important;
     border: none;
     outline: none;
