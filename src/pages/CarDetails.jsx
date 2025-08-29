@@ -199,36 +199,13 @@ const CarDetails = () => {
                         </div>
                     </Col>
 
-                    <Col lg="5" className='mt-5'>
+                    {/* <Col lg="5" className='mt-5'>
                         <div className="payment__info mt-5">
                             <h5 className='mb-4 fw-bold'>Payment Information</h5>
 
-                            {/* Car Features Display */}
-                            {singleCarItem.features && (
-                                <div className="car-features mb-4 p-3 border rounded">
-                                    <h6 className="fw-bold mb-3">Car Features</h6>
-                                    <div className="d-flex flex-column gap-2">
-                                        <span><strong>Infotainment:</strong> {singleCarItem.features.infotainment}</span>
-                                        <span><strong>Seating:</strong> {singleCarItem.features.seating}</span>
-                                        <span><strong>Sunroof:</strong> {singleCarItem.features.sunroof}</span>
-                                        <span><strong>Headlights:</strong> {singleCarItem.features.headlights}</span>
-                                        {singleCarItem.features.color_options && (
-                                            <div>
-                                                <strong>Available Colors:</strong>
-                                                <ul className="mb-0 mt-1">
-                                                    {singleCarItem.features.color_options.map((color, index) => (
-                                                        <li key={index}>{color}</li>
-                                                    ))}
-                                                </ul>
-                                            </div>
-                                        )}
-                                    </div>
-                                </div>
-                            )}
-
                             <PaymentMethod carData={singleCarItem}></PaymentMethod>
                         </div>
-                    </Col>
+                    </Col> */}
 
                     
                 </Row>

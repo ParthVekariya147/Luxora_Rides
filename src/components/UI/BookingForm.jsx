@@ -1,427 +1,136 @@
-// import React, { useState } from "react";
-// import { Form, FormGroup, Label, Input } from "reactstrap";
-// import { toast } from "react-hot-toast";
-// import { createBooking } from "../../api";
-// import { generateAndStoreCSRFToken } from "../../utils/tokenUtils";
-// import "../../styles/booking-form.css";
-
-// const BookingForm = () => {
-//   const [formData, setFormData] = useState({
-//     firstName: "",
-//     lastName: "",
-//     email: "",
-//     mobile: "",
-//     from: "",
-//     to: "",
-//     persons: "1 person",
-//     luggage: "1 luggage",
-//     date: "",
-//     time: "",
-//     notes: "",
-//   });
-
-//   const [error, setError] = useState("");
-//   const [loading, setLoading] = useState(false);
-//   const [success, setSuccess] = useState(false);
-
-//   const handleChange = (e) => {
-//     setFormData({ ...formData, [e.target.name]: e.target.value });
-//   };
-
-//   const submitHandler = (event) => {
-//     event.preventDefault();
-//     // Simple validation example
-//     if (!formData.firstName || !formData.lastName || !formData.email) {
-//       setError("⚠ Please fill in all required fields.");
-//       return;
-//     }
-//     setError("");
-//     alert("✅ Booking information submitted successfully!");
-//     // you can now send formData to your API/backend
-//   };
-
-//   return (
-//     <div className="booking-form card shadow-lg p-4 rounded">
-//       <h3 className="fw-bold mb-4 text-center">Booking Information</h3>
-
-//       <Form onSubmit={submitHandler}>
-//         <div className="row">
-//           <FormGroup className="col-md-6 mb-3">
-//             <Label>First Name *</Label>
-//             <Input
-//               type="text"
-//               name="firstName"
-//               placeholder="Enter First Name"
-//               value={formData.firstName}
-//               onChange={handleChange}
-//               required
-//             />
-//           </FormGroup>
-
-//           <FormGroup className="col-md-6 mb-3">
-//             <Label>Last Name *</Label>
-//             <Input
-//               type="text"
-//               name="lastName"
-//               placeholder="Enter Last Name"
-//               value={formData.lastName}
-//               onChange={handleChange}
-//               required
-//             />
-//           </FormGroup>
-
-//           <FormGroup className="col-md-6 mb-3">
-//             <Label>Email *</Label>
-//             <Input
-//               type="email"
-//               name="email"
-//               placeholder="Enter Email"
-//               value={formData.email}
-//               onChange={handleChange}
-//               required
-//             />
-//           </FormGroup>
-
-//           <FormGroup className="col-md-6 mb-3">
-//             <Label>Mobile Number</Label>
-//             <Input
-//               type="number"
-//               name="mobile"
-//               placeholder="Enter Mobile Number"
-//               value={formData.mobile}
-//               onChange={handleChange}
-//             />
-//           </FormGroup>
-
-//           <FormGroup className="col-md-6 mb-3">
-//             <Label>From Address</Label>
-//             <Input
-//               type="text"
-//               name="from"
-//               placeholder="Pickup Location"
-//               value={formData.from}
-//               onChange={handleChange}
-//             />
-//           </FormGroup>
-
-//           <FormGroup className="col-md-6 mb-3">
-//             <Label>To Address</Label>
-//             <Input
-//               type="text"
-//               name="to"
-//               placeholder="Destination"
-//               value={formData.to}
-//               onChange={handleChange}
-//             />
-//           </FormGroup>
-
-//           <FormGroup className="col-md-6 mb-3">
-//             <Label>No. of Persons</Label>
-//             <Input
-//               type="select"
-//               name="persons"
-//               value={formData.persons}
-//               onChange={handleChange}
-//             >
-//               <option>1 Person</option>
-//               <option>2 Person</option>
-//               <option>3 Person</option>
-//               <option>4 Person</option>
-//               <option>6+ Person</option>
-//             </Input>
-//           </FormGroup>
-
-//           <FormGroup className="col-md-6 mb-3">
-//             <Label>No. of Luggage</Label>
-//             <Input
-//               type="select"
-//               name="luggage"
-//               value={formData.luggage}
-//               onChange={handleChange}
-//             >
-//               <option>1 Luggage</option>
-//               <option>2 Luggage</option>
-//               <option>3 Luggage</option>
-//               <option>4 Luggage</option>
-//               <option>5+ Luggage</option>
-//             </Input>
-//           </FormGroup>
-
-//           <FormGroup className="col-md-6 mb-3">
-//             <Label>Journey Date</Label>
-//             <Input
-//               type="date"
-//               name="date"
-//               value={formData.date}
-//               onChange={handleChange}
-//             />
-//           </FormGroup>
-
-//           <FormGroup className="col-md-6 mb-3">
-//             <Label>Journey Time</Label>
-//             <Input
-//               type="time"
-//               name="time"
-//               value={formData.time}
-//               onChange={handleChange}
-//             />
-//           </FormGroup>
-
-//           <FormGroup className="col-12 mb-3">
-//             <Label>Additional Notes</Label>
-//             <Input
-//               type="textarea"
-//               rows="4"
-//               name="notes"
-//               placeholder="Write any special request..."
-//               value={formData.notes}
-//               onChange={handleChange}
-//             />
-//           </FormGroup>
-//         </div>
-
-//         {error && <p className="text-danger small">{error}</p>}
-
-//         <div className="text-center mt-4">
-//           <button type="submit" className="btn btn-primary px-5 py-2">
-//             Submit Booking
-//           </button>
-//         </div>
-//       </Form>
-//     </div>
-//   );
-// };
-
-// export default BookingForm;
-   
-
-import React, { useState , useEffect} from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import { Form, FormGroup, Label, Input } from "reactstrap";
 import { toast } from "react-hot-toast";
-import { createBooking } from "../../api";
-import { generateAndStoreCSRFToken } from "../../utils/tokenUtils";
+import { createBooking } from "../../api"; // tamaro API call
 import "../../styles/booking-form.css";
 
-const BookingForm = () => {
+// Helper function to combine date and time into an ISO string
+const combineDateTime = (date, time) => {
+  if (!date || !time) return null;
+  return new Date(`${date}T${time}`).toISOString();
+};
 
+const BookingForm = (carData) => {
+console.log('BookingForm.jsx / carData / 13 -------------------  ', carData);
   const [formData, setFormData] = useState({
+    // Backend mate jaruri fields
+    car_id: "",
+    pickup_date: "",
+    pickup_time: "", 
+    return_date: "",
+    return_time: "",
+    pickup_location: "",
+    return_location: "",
+    daily_rate: "",
+    payment_method: "upi",
+    // UI mate jaruri fields
     firstName: "",
     lastName: "",
     email: "",
     mobile: "",
-    from: "",
-    to: "",
-    persons: "1 person",
-    luggage: "1 luggage",
-    date: "",
-    time: "",
-    notes: "",
-    carId: "",  // Optionally store the car id in the formData
   });
 
-  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
 
-  // Handle changes
+  // carId and dailyRate localStorage mathi load karva mate
+  useEffect(() => {
+    const storedCarId = localStorage.getItem('rentedCarId');
+    const storedDailyRate = localStorage.getItem('rentedCarRate');
+    if (storedCarId) {
+      setFormData(prev => ({ 
+        ...prev, 
+        car_id: storedCarId,
+        daily_rate: storedDailyRate || ''
+      }));
+    }
+  }, []);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const submitHandler = async (event) => {
     event.preventDefault();
-    if (!formData.firstName || !formData.lastName || !formData.email) {
-      setError("⚠ Please fill in all required fields.");
+    
+    // Simple validation
+    if (!formData.firstName || !formData.email || !formData.pickup_date || !formData.return_date) {
+      toast.error("⚠ Please fill in all required fields.");
       return;
     }
 
-    setError("");
     setLoading(true);
-    setSuccess(false);
+
+    // API ma moklva mate fakt jaruri fields j select karo
+    const bookingData = {
+      car_id: carData?.carData?._id,
+      pickup_date: combineDateTime(formData.pickup_date, formData.pickup_time),
+      return_date: combineDateTime(formData.return_date, formData.return_time),
+      pickup_location: formData.pickup_location,
+      return_location: formData.return_location,
+      daily_rate: carData?.carData?.price_per_day,
+      payment_method: formData.payment_method,
+    };
+    
+    if (!bookingData.pickup_date || !bookingData.return_date) {
+        toast.error("⚠ Please select both date and time for pickup and return.");
+        setLoading(false);
+        return;
+    }
 
     try {
-      const csrfToken = generateAndStoreCSRFToken('booking-form');
+      const result = await createBooking(bookingData);
 
-      // Send form data including carId
-      await createBooking(formData, csrfToken);
-
-      setSuccess(true);
-      toast.success("✅ Booking information submitted successfully!");
-
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        mobile: "",
-        from: "",
-        to: "",
-        persons: "1 person",
-        luggage: "1 luggage",
-        date: "",
-        time: "",
-        notes: "",
-        carId: id || "",
-      });
+      if (result.success) {
+        toast.success(result.message || "✅ Booking submitted successfully!");
+        // Form reset kari do
+        setFormData({
+            car_id: formData.car_id, daily_rate: formData.daily_rate,
+            pickup_date: "", pickup_time: "", return_date: "", return_time: "",
+            pickup_location: "", return_location: "", payment_method: "upi",
+            firstName: "", lastName: "", email: "", mobile: "",
+        });
+      } else {
+        toast.error("❌ " + (result.message || "Failed to submit booking."));
+      }
     } catch (err) {
-      setError("⚠ " + (err.message || "Failed to submit booking. Please try again."));
-      toast.error("❌ Failed to submit booking. Please try again.");
+      toast.error("❌ " + (err.message || "An unexpected error occurred."));
     } finally {
       setLoading(false);
     }
   };
 
-
-    useEffect(() => {
-    const storedCarId = localStorage.getItem('rentedCarId');
-    if (storedCarId) {
-      setFormData(prev => ({ ...prev, carId: storedCarId }));
-    }
-  }, []);
-
-
   return (
     <div className="booking-form card shadow-lg p-4 rounded">
       <h3 className="fw-bold mb-4 text-center">Booking Information</h3>
-
       <Form onSubmit={submitHandler}>
         <div className="row">
-          <FormGroup className="col-md-6 mb-3">
-            <Label>First Name *</Label>
-            <Input
-              type="text"
-              name="firstName"
-              placeholder="Enter First Name"
-              value={formData.firstName}
-              onChange={handleChange}
-              required
-            />
-          </FormGroup>
+          {/* User Details Inputs */}
+          <FormGroup className="col-md-6 mb-3"><Label>First Name *</Label><Input type="text" name="firstName" value={formData.firstName} onChange={handleChange} required /></FormGroup>
+          <FormGroup className="col-md-6 mb-3"><Label>Last Name *</Label><Input type="text" name="lastName" value={formData.lastName} onChange={handleChange} required /></FormGroup>
+          <FormGroup className="col-md-6 mb-3"><Label>Email *</Label><Input type="email" name="email" value={formData.email} onChange={handleChange} required /></FormGroup>
+          <FormGroup className="col-md-6 mb-3"><Label>Mobile Number</Label><Input type="number" name="mobile" value={formData.mobile} onChange={handleChange} /></FormGroup>
+
+          {/* Booking Details Inputs */}
+          <FormGroup className="col-md-6 mb-3"><Label>Pickup Location *</Label><Input type="text" name="pickup_location" placeholder="Pickup Location" value={formData.pickup_location} onChange={handleChange} required /></FormGroup>
+          <FormGroup className="col-md-6 mb-3"><Label>Return Location *</Label><Input type="text" name="return_location" placeholder="Destination" value={formData.return_location} onChange={handleChange} required /></FormGroup>
+          
+          <FormGroup className="col-md-6 mb-3"><Label>Pickup Date *</Label><Input type="date" name="pickup_date" value={formData.pickup_date} onChange={handleChange} required /></FormGroup>
+          <FormGroup className="col-md-6 mb-3"><Label>Pickup Time *</Label><Input type="time" name="pickup_time" value={formData.pickup_time} onChange={handleChange} required /></FormGroup>
+
+          <FormGroup className="col-md-6 mb-3"><Label>Return Date *</Label><Input type="date" name="return_date" value={formData.return_date} onChange={handleChange} required /></FormGroup>
+          <FormGroup className="col-md-6 mb-3"><Label>Return Time *</Label><Input type="time" name="return_time" value={formData.return_time} onChange={handleChange} required /></FormGroup>
+          
+          <FormGroup className="col-md-6 mb-3"><Label>Daily Rate (₹)</Label><Input type="number" name="daily_rate" disabled value={ carData?.carData?.price_per_day} readOnly /></FormGroup>
 
           <FormGroup className="col-md-6 mb-3">
-            <Label>Last Name *</Label>
-            <Input
-              type="text"
-              name="lastName"
-              placeholder="Enter Last Name"
-              value={formData.lastName}
-              onChange={handleChange}
-              required
-            />
-          </FormGroup>
-
-          <FormGroup className="col-md-6 mb-3">
-            <Label>Email *</Label>
-            <Input
-              type="email"
-              name="email"
-              placeholder="Enter Email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </FormGroup>
-
-          <FormGroup className="col-md-6 mb-3">
-            <Label>Mobile Number</Label>
-            <Input
-              type="number"
-              name="mobile"
-              placeholder="Enter Mobile Number"
-              value={formData.mobile}
-              onChange={handleChange}
-            />
-          </FormGroup>
-
-          <FormGroup className="col-md-6 mb-3">
-            <Label>From Address</Label>
-            <Input
-              type="text"
-              name="from"
-              placeholder="Pickup Location"
-              value={formData.from}
-              onChange={handleChange}
-            />
-          </FormGroup>
-
-          <FormGroup className="col-md-6 mb-3">
-            <Label>To Address</Label>
-            <Input
-              type="text"
-              name="to"
-              placeholder="Destination"
-              value={formData.to}
-              onChange={handleChange}
-            />
-          </FormGroup>
-
-          <FormGroup className="col-md-6 mb-3">
-            <Label>No. of Persons</Label>
-            <Input
-              type="select"
-              name="persons"
-              value={formData.persons}
-              onChange={handleChange}
-            >
-              <option>1 Person</option>
-              <option>2 Person</option>
-              <option>3 Person</option>
-              <option>4 Person</option>
-              <option>6+ Person</option>
+            <Label>Payment Method</Label>
+            <Input type="select" name="payment_method" value={formData.payment_method} onChange={handleChange}>
+              <option value="upi">UPI</option>
+              <option value="credit_card">Credit Card</option>
+              <option value="cash">Cash</option>
             </Input>
-          </FormGroup>
-
-          <FormGroup className="col-md-6 mb-3">
-            <Label>No. of Luggage</Label>
-            <Input
-              type="select"
-              name="luggage"
-              value={formData.luggage}
-              onChange={handleChange}
-            >
-              <option>1 Luggage</option>
-              <option>2 Luggage</option>
-              <option>3 Luggage</option>
-              <option>4 Luggage</option>
-              <option>5+ Luggage</option>
-            </Input>
-          </FormGroup>
-
-          <FormGroup className="col-md-6 mb-3">
-            <Label>Journey Date</Label>
-            <Input
-              type="date"
-              name="date"
-              value={formData.date}
-              onChange={handleChange}
-            />
-          </FormGroup>
-
-          <FormGroup className="col-md-6 mb-3">
-            <Label>Journey Time</Label>
-            <Input
-              type="time"
-              name="time"
-              value={formData.time}
-              onChange={handleChange}
-            />
-          </FormGroup>
-
-          <FormGroup className="col-12 mb-3">
-            <Label>Additional Notes</Label>
-            <Input
-              type="textarea"
-              rows="4"
-              name="notes"
-              placeholder="Write any special request..."
-              value={formData.notes}
-              onChange={handleChange}
-            />
           </FormGroup>
         </div>
-
-        {error && <p className="text-danger small">{error}</p>}
-        {success && <p className="text-success small">✅ Booking submitted successfully!</p>}
 
         <div className="text-center mt-4">
           <button type="submit" className="btn btn-primary px-5 py-2" disabled={loading}>
