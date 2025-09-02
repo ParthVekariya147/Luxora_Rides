@@ -11,24 +11,33 @@ const CarItem = (props) => {
     technical_specifications,
     price_per_day,
     _id,
+    transmission,
+    seating_capacity,
   } = props.item || {};
+  console.log(
+    "CarItem.jsx / seating_capacity / 15 -------------------  ",
+    seating_capacity
+  );
 
   // Safely extract values with fallbacks
-  const transmission = technical_specifications?.transmission || "N/A";
-  const topSpeed = technical_specifications?.top_speed_kmh || "N/A";
+  const transmission1 = technical_specifications?.transmission || "N/A";
+  const topSpeed = technical_specifications?.seating_capacity || "N/A";
 
   return (
     <Col lg="4" md="4" sm="6" className="mb-5">
       <div className="car__item">
-        <div className="car__img" style={{ height: '200px', overflow: 'hidden' }}>
+        <div
+          className="car__img"
+          style={{ height: "200px", overflow: "hidden" }}
+        >
           <img
             src={image_url}
             alt={car_name || "Car"}
             style={{
-              width: '100%',
-              height: '200px',
-              objectFit: 'cover',
-              objectPosition: 'center'
+              width: "100%",
+              height: "200px",
+              objectFit: "cover",
+              objectPosition: "center",
             }}
             onError={(e) => {
               e.target.src = "https://placehold.co/600x400?text=Car+Image";
@@ -56,7 +65,7 @@ const CarItem = (props) => {
             </span>
 
             <span className="d-flex align-items-center gap-1">
-              <i class="ri-timer-flash-line"></i> {topSpeed} km/h
+              <i class="ri-timer-flash-line"></i> {seating_capacity}
             </span>
           </div>
 
@@ -69,8 +78,9 @@ const CarItem = (props) => {
             <Link to={`/cars/${_id || "unknown"}`}> Rent </Link>
           </button>
 
-          <button className="car__item-btn car__btn-details w-50"
-                onClick={() => {
+          <button
+            className="car__item-btn car__btn-details w-50"
+            onClick={() => {
               localStorage.setItem("rentedCarId", _id);
             }}
           >
