@@ -142,22 +142,33 @@ const CarDetails = () => {
                 <p className="section__description">
                   {singleCarItem.description}
                 </p>
-
                 <div className="mt-3 d-flex flex-column gap-3">
                   <span className="d-flex align-items-center gap-2 section__description">
-                    <i className="ri-roadster-line text-warning"></i>{" "}
+                    <i
+                      className="ri-roadster-line"
+                      style={{ color: "#00BCD4" }}
+                    ></i>{" "}
                     {singleCarItem.year_model}
                   </span>
                   <span className="d-flex align-items-center gap-2 section__description">
-                    <i className="ri-settings-2-line text-warning"></i>{" "}
+                    <i
+                      className="ri-settings-2-line"
+                      style={{ color: "#00BCD4" }}
+                    ></i>{" "}
                     {singleCarItem?.transmission || "N/A"}
                   </span>
                   <span className="d-flex align-items-center gap-2 section__description">
-                    <i className="ri-wheelchair-line text-warning"></i>{" "}
+                    <i
+                      className="ri-wheelchair-line"
+                      style={{ color: "#00BCD4" }}
+                    ></i>{" "}
                     {singleCarItem?.seating_capacity || "N/A"} Seater
                   </span>
                   <span className="d-flex align-items-center gap-2 section__description">
-                    <i className="ri-building-2-line text-warning"></i>{" "}
+                    <i
+                      className="ri-building-2-line"
+                      style={{ color: "#00BCD4" }}
+                    ></i>{" "}
                     {singleCarItem.brand}
                   </span>
                 </div>

@@ -40,8 +40,11 @@ const Contact = () => {
   const contactTypes = [
     { value: "general", label: "General Inquiry" },
     { value: "support", label: "Technical Support" },
-    { value: "billing", label: "Billing Question" },
+    { value: "booking", label: "Booking Related" },
+    { value: "complaint", label: "Complaint" },
     { value: "feedback", label: "Feedback" },
+    { value: "partnership", label: "Partnership" },
+    { value: "other", label: "Other" },
   ];
 
   const isLoggedIn = () => {
