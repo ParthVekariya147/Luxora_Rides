@@ -30,7 +30,11 @@ const BlogDetails = () => {
             <Row>
                 <Col lg='8' md='6' >
                         <div className="blog__details" >
+<<<<<<< HEAD
                             <img src={blog.imgUrl} alt="" className='w-100 mt-4'/>
+=======
+                            <img src={blog.imgUrl} alt="" className='w-100'/>
+>>>>>>> e188a9cde8332765574c75e97f384e46edcfd986
                             <h2 className='section__title'>{blog.title}</h2>
 
                             <div className="blog__publisher d-flex align-items-center mb-4 gap-4">
@@ -109,7 +113,11 @@ const BlogDetails = () => {
                 </Col>
 
                 <Col lg='4' md='4'>
+<<<<<<< HEAD
                     <div className="recent__post mt-4 mb-4">
+=======
+                    <div className="recent__post mb-4">
+>>>>>>> e188a9cde8332765574c75e97f384e46edcfd986
                         <h5 className="fw-bold">Recent Posts</h5>
                     </div>
                     {

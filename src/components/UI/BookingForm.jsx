@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Form, FormGroup, Label, Input } from "reactstrap";
 import { toast } from "react-hot-toast";
+<<<<<<< HEAD
 import { createBooking } from "../../api"; 
+=======
+import { createBooking } from "../../api"; // tamaro API call
+>>>>>>> e188a9cde8332765574c75e97f384e46edcfd986
 import "../../styles/booking-form.css";
 
 // Helper function to combine date and time into an ISO string
@@ -11,7 +15,13 @@ const combineDateTime = (date, time) => {
 };
 
 const BookingForm = (carData) => {
+<<<<<<< HEAD
   const [formData, setFormData] = useState({
+=======
+  console.log("BookingForm.jsx / carData / 13 -------------------  ", carData);
+  const [formData, setFormData] = useState({
+    // Backend mate jaruri fields
+>>>>>>> e188a9cde8332765574c75e97f384e46edcfd986
     car_id: "",
     pickup_date: "",
     pickup_time: "",
@@ -21,6 +31,10 @@ const BookingForm = (carData) => {
     return_location: "",
     daily_rate: "",
     payment_method: "upi",
+<<<<<<< HEAD
+=======
+    // UI mate jaruri fields
+>>>>>>> e188a9cde8332765574c75e97f384e46edcfd986
     firstName: "",
     lastName: "",
     email: "",
@@ -28,6 +42,7 @@ const BookingForm = (carData) => {
   });
 
   const [loading, setLoading] = useState(false);
+<<<<<<< HEAD
   const [minDate, setMinDate] = useState("");
 
   // Set today's date for validation
@@ -39,6 +54,10 @@ const BookingForm = (carData) => {
     setMinDate(`${yyyy}-${mm}-${dd}`);
   }, []);
 
+=======
+
+  // carId and dailyRate localStorage mathi load karva mate
+>>>>>>> e188a9cde8332765574c75e97f384e46edcfd986
   useEffect(() => {
     const storedCarId = localStorage.getItem("rentedCarId");
     const storedDailyRate = localStorage.getItem("rentedCarRate");
@@ -58,6 +77,10 @@ const BookingForm = (carData) => {
   const submitHandler = async (event) => {
     event.preventDefault();
 
+<<<<<<< HEAD
+=======
+    // Simple validation
+>>>>>>> e188a9cde8332765574c75e97f384e46edcfd986
     if (
       !formData.firstName ||
       !formData.email ||
@@ -68,6 +91,7 @@ const BookingForm = (carData) => {
       return;
     }
 
+<<<<<<< HEAD
     // Date validation
     if (formData.pickup_date < minDate) {
       toast.error("⚠ Pickup date cannot be in the past.");
@@ -81,6 +105,11 @@ const BookingForm = (carData) => {
 
     setLoading(true);
 
+=======
+    setLoading(true);
+
+    // API ma moklva mate fakt jaruri fields j select karo
+>>>>>>> e188a9cde8332765574c75e97f384e46edcfd986
     const bookingData = {
       car_id: carData?.carData?._id,
       pickup_date: combineDateTime(formData.pickup_date, formData.pickup_time),
@@ -102,6 +131,10 @@ const BookingForm = (carData) => {
 
       if (result.success) {
         toast.success(result.message || "✅ Booking submitted successfully!");
+<<<<<<< HEAD
+=======
+        // Form reset kari do
+>>>>>>> e188a9cde8332765574c75e97f384e46edcfd986
         setFormData({
           car_id: formData.car_id,
           daily_rate: formData.daily_rate,
@@ -132,7 +165,11 @@ const BookingForm = (carData) => {
       <h3 className="fw-bold mb-4 text-center">Booking Information</h3>
       <Form onSubmit={submitHandler}>
         <div className="row">
+<<<<<<< HEAD
           {/* User Details */}
+=======
+          {/* User Details Inputs */}
+>>>>>>> e188a9cde8332765574c75e97f384e46edcfd986
           <FormGroup className="col-md-6 mb-3">
             <Label>First Name *</Label>
             <Input
@@ -173,7 +210,11 @@ const BookingForm = (carData) => {
             />
           </FormGroup>
 
+<<<<<<< HEAD
           {/* Booking Details */}
+=======
+          {/* Booking Details Inputs */}
+>>>>>>> e188a9cde8332765574c75e97f384e46edcfd986
           <FormGroup className="col-md-6 mb-3">
             <Label>Pickup Location *</Label>
             <Input
@@ -204,7 +245,10 @@ const BookingForm = (carData) => {
               name="pickup_date"
               value={formData.pickup_date}
               onChange={handleChange}
+<<<<<<< HEAD
               min={minDate}   // ✅ Past date block
+=======
+>>>>>>> e188a9cde8332765574c75e97f384e46edcfd986
               required
             />
           </FormGroup>
@@ -226,7 +270,10 @@ const BookingForm = (carData) => {
               name="return_date"
               value={formData.return_date}
               onChange={handleChange}
+<<<<<<< HEAD
               min={formData.pickup_date || minDate}  // ✅ cannot be before pickup
+=======
+>>>>>>> e188a9cde8332765574c75e97f384e46edcfd986
               required
             />
           </FormGroup>

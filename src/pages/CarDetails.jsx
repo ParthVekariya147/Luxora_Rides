@@ -175,8 +175,14 @@ const CarDetails = () => {
               </div>
             </Col>
 
+<<<<<<< HEAD
             <Col lg="12" className="mt-5 d-flex justify-content-center">
               <div style={{ maxWidth: "700px", width: "100%" }}>
+=======
+            <Col lg="7" className="mt-5">
+              <div className="booking-info mt-5">
+                <h5 className="mb-4 fw-bold">Booking Information</h5>
+>>>>>>> e188a9cde8332765574c75e97f384e46edcfd986
 
                 {/* Rental Details Display */}
                 {singleCarItem.rental_details && (
@@ -213,7 +219,11 @@ const CarDetails = () => {
                   </div>
                 )}
 
+<<<<<<< HEAD
                 <BookingForm carData={singleCarItem} />
+=======
+                <BookingForm carData={singleCarItem}></BookingForm>
+>>>>>>> e188a9cde8332765574c75e97f384e46edcfd986
               </div>
             </Col>
           </Row>
