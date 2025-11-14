@@ -10,10 +10,7 @@
     "bootstrap": "^5.2.3",
     "framer-motion": "^12.23.12",
     "lucide-react": "^0.539.0",
-<<<<<<< HEAD
     "motion": "^12.23.12",
-=======
->>>>>>> e188a9cde8332765574c75e97f384e46edcfd986
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.5.2",

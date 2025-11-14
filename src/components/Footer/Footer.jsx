@@ -6,10 +6,7 @@ import logo from "../../assets/all-images/logo.png";
 
 const quickLinks = [
   { path: '/about', display: 'About' },
-<<<<<<< HEAD
-=======
   { path: '#', display: 'Privacy Policy' },
->>>>>>> e188a9cde8332765574c75e97f384e46edcfd986
   { path: '/cars', display: 'Car Listing' },
   { path: '/blogs', display: 'Blog' },
   { path: '/contact', display: 'Contact' },

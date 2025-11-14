@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "../../styles/find-car-form.css";
@@ -16,16 +15,6 @@ const FindCarForm = () => {
     const dd = String(today.getDate()).padStart(2, "0");
     setMinDate(`${yyyy}-${mm}-${dd}`);
   }, []);
-=======
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import "../../styles/find-car-form.css";
-import { Form, FormGroup } from 'reactstrap';
-import "./CarItem";
-
-const FindCarForm = () => {
-  const navigate = useNavigate(); 
->>>>>>> e188a9cde8332765574c75e97f384e46edcfd986
 
   const handleSubmit = (e) => {
     e.preventDefault(); 
@@ -44,16 +33,13 @@ const FindCarForm = () => {
         </FormGroup>
 
         <FormGroup className='form__group'>
-<<<<<<< HEAD
           <input 
             type="date" 
             placeholder='Journey Date' 
             required 
             min={minDate}   // ✅ past date block करी दी
           />
-=======
           <input type="date" placeholder='Journey Date' required />
->>>>>>> e188a9cde8332765574c75e97f384e46edcfd986
         </FormGroup>
 
         <FormGroup className='form__group'>

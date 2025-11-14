@@ -1,5 +1,3 @@
-
-
 .payment label {
     font-weight: 600;
     color: #6d42c7;
@@ -14,13 +12,12 @@
     color: #fff;
 }
 
-.payment-method h4{
+.payment-method h4 {
     margin-bottom: 30px;
-<<<<<<< HEAD
-    color: #6d42c7;         /* website accent color */
-=======
-    color: #007bff;         /* website accent color */
->>>>>>> e188a9cde8332765574c75e97f384e46edcfd986
+    color: #6d42c7;
+    /* website accent color */
+    color: #007bff;
+    /* website accent color */
     font-weight: 600;
     text-align: center;
 }
